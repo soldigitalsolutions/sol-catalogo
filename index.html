@@ -5,27 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sol - Venta por Catálogo</title>
     
-    <!-- Meta etiquetas Open Graph para WhatsApp y Redes -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sol - Venta por Catálogo">
-    <meta property="og:description" content="Productos de belleza, cosméticos y perfumería para entrega inmediata.">
+    <meta property="og:description" content="Productos de belleza, cosméticos y perfumería por catálogo.">
     <meta property="og:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.png">
     <meta property="og:site_name" content="Vitrina Sol">
 
-    <!-- Meta etiquetas PWA -->
     <meta name="theme-color" content="#ea580c">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Vitrina Sol">
     <link rel="manifest" href="./manifest.json">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -92,14 +85,11 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-orange-500 selection:text-white">
 
-    <!-- BARRA SUPERIOR SLIM DE CORTE SUNSET -->
     <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 h-2.5 w-full shadow-xs"></div>
 
-    <!-- NAVBAR NAVEGACIÓN PRINCIPAL -->
     <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-orange-100 shadow-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             
-            <!-- Logo Sol Unificado -->
             <a href="#" class="flex items-center space-x-2.5 group">
                 <div class="relative w-11 h-11 flex items-center justify-center transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-tr from-amber-400 via-orange-400 to-rose-400 rounded-full blur-xs opacity-50 animate-sun-pulse"></div>
@@ -123,7 +113,6 @@
                 </div>
             </a>
 
-            <!-- Botón de Pedido del Cliente -->
             <div class="flex items-center gap-2">
                 <button onclick="toggleCartDrawer()" class="relative px-4 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white rounded-xl font-extrabold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer active:scale-95">
                     <i class="fa-solid fa-basket-shopping text-sm"></i>
@@ -134,26 +123,25 @@
         </div>
     </nav>
 
-    <!-- CABECERA CENTRAL SUNSET HERMOSA -->
     <header class="sunset-banner border-b border-orange-100 py-8 md:py-10 px-4 text-center relative overflow-hidden">
         <div class="max-w-3xl mx-auto relative z-10 space-y-3">
             
-            <div class="w-20 h-20 md:w-24 md:h-24 mx-auto relative flex items-center justify-center transition-transform hover:scale-105">
+            <div class="w-24 h-24 md:w-28 md:h-28 mx-auto relative flex items-center justify-center transition-transform hover:scale-105">
                 <div class="absolute inset-0 bg-amber-400 rounded-full blur-md opacity-40 animate-sun-pulse"></div>
                 <svg class="w-full h-full animate-sun-spin" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="24" fill="#fbbf24" />
+                    <circle cx="50" cy="50" r="26" fill="#fbbf24" />
                     <g stroke="#ea580c" stroke-width="4.5" stroke-linecap="round">
-                        <line x1="50" y1="8" x2="50" y2="18" />
-                        <line x1="50" y1="82" x2="50" y2="92" />
-                        <line x1="8" y1="50" x2="18" y2="50" />
-                        <line x1="82" y1="50" x2="92" y2="50" />
-                        <line x1="21" y1="21" x2="28" y2="28" />
-                        <line x1="72" y1="72" x2="79" y2="79" />
-                        <line x1="21" y1="79" x2="28" y2="72" />
-                        <line x1="72" y1="28" x2="79" y2="21" />
+                        <line x1="50" y1="6" x2="50" y2="16" />
+                        <line x1="50" y1="84" x2="50" y2="94" />
+                        <line x1="6" y1="50" x2="16" y2="50" />
+                        <line x1="84" y1="50" x2="94" y2="50" />
+                        <line x1="19" y1="19" x2="26" y2="26" />
+                        <line x1="74" y1="74" x2="81" y2="81" />
+                        <line x1="19" y1="81" x2="26" y2="74" />
+                        <line x1="74" y1="26" x2="81" y2="19" />
                     </g>
                 </svg>
-                <span class="absolute text-amber-950 text-3xl md:text-4xl font-extrabold handwritten pt-1 select-none text-sun-script">Sol</span>
+                <span class="absolute text-amber-950 text-4xl md:text-5xl font-extrabold handwritten pt-1 select-none text-sun-script drop-shadow-sm">Sol</span>
             </div>
 
             <h2 class="text-2xl md:text-3xl font-black text-sunset-brand uppercase tracking-wider serif-title leading-tight">
@@ -169,10 +157,10 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full space-y-6">
         
-        <!-- PASOS DE COMPRA CLAROS -->
+        <!-- PASOS DE COMPRA CLAROS Y ILUSTRADOS -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-gradient-to-r from-orange-50/90 via-amber-50/70 to-orange-50/90 p-4 rounded-2xl border border-orange-200/60 shadow-xs">
-            <div class="flex items-center space-x-3 p-2.5 bg-white/70 rounded-xl border border-orange-100/60">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-sm shrink-0">
+            <div class="flex items-center space-x-3 p-3 bg-white/80 rounded-xl border border-orange-100/60 shadow-2xs">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-base shrink-0">
                     <i class="fa-solid fa-hand-pointer text-yellow-100"></i>
                 </div>
                 <div>
@@ -181,8 +169,8 @@
                 </div>
             </div>
 
-            <div class="flex items-center space-x-3 p-2.5 bg-white/70 rounded-xl border border-orange-100/60">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-sm shrink-0">
+            <div class="flex items-center space-x-3 p-3 bg-white/80 rounded-xl border border-orange-100/60 shadow-2xs">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-base shrink-0">
                     <i class="fa-solid fa-list-check text-yellow-100"></i>
                 </div>
                 <div>
@@ -191,9 +179,9 @@
                 </div>
             </div>
 
-            <div class="flex items-center space-x-3 p-2.5 bg-white/70 rounded-xl border border-orange-100/60">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-sm shrink-0">
-                    <i class="fa-brands fa-whatsapp text-lg text-white"></i>
+            <div class="flex items-center space-x-3 p-3 bg-white/80 rounded-xl border border-orange-100/60 shadow-2xs">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-base shrink-0">
+                    <i class="fa-brands fa-whatsapp text-xl text-white"></i>
                 </div>
                 <div>
                     <h4 class="font-extrabold text-amber-950 text-xs">3. Envía por WhatsApp</h4>
@@ -202,7 +190,6 @@
             </div>
         </section>
 
-        <!-- FILTROS POR REVISTA / MARCA -->
         <section class="bg-white p-4 rounded-2xl shadow-xs border border-orange-100 space-y-3">
             <div class="flex items-center justify-between">
                 <h3 class="text-xs font-extrabold uppercase tracking-wider text-amber-900/80 flex items-center gap-1.5">
@@ -213,7 +200,6 @@
             
             <div id="brand-filters-container" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar min-h-[38px]"></div>
             
-            <!-- Búsqueda y Ordenamiento -->
             <div class="pt-2 flex flex-col md:flex-row items-center justify-between gap-3 border-t border-orange-50">
                 <div class="relative w-full md:w-80">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
@@ -232,13 +218,10 @@
             </div>
         </section>
 
-        <!-- CATALOG GRID -->
         <section id="catalog-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 min-h-[250px]">
-            <!-- Productos renderizados dinámicamente -->
         </section>
     </main>
 
-    <!-- MODAL DE CONTRASEÑA ADMIN -->
     <div id="password-modal" class="fixed inset-0 bg-stone-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-orange-100 text-center space-y-4">
             <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-xl mx-auto">
@@ -256,7 +239,7 @@
         </div>
     </div>
 
-    <!-- MODAL GESTIONAR KIOSCO (PANEL ADMIN) -->
+    <!-- MODAL GESTIONAR KIOSCO -->
     <div id="admin-modal" class="fixed inset-0 bg-stone-950/75 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
         <div class="bg-white rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl border border-orange-100 overflow-hidden">
             
@@ -267,7 +250,7 @@
                     </div>
                     <div>
                         <h3 class="font-bold text-sm sm:text-base leading-tight">Gestionar Kiosco - Sol Catálogo</h3>
-                        <p class="text-[10px] text-amber-200/80">Inventario, Cargador Masivo y Despachador</p>
+                        <p class="text-[10px] text-amber-200/80">Inventario, Cargador Masivo y Configuración</p>
                     </div>
                 </div>
                 <button onclick="toggleAdminModal()" class="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all text-white cursor-pointer">
@@ -282,10 +265,7 @@
                         <i class="fa-solid fa-boxes-stacked mr-1"></i> Inventario
                     </button>
                     <button onclick="switchAdminTab('batch')" id="tab-btn-batch" class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500 text-white hover:bg-amber-600 shadow-xs cursor-pointer">
-                        <i class="fa-solid fa-bolt mr-1"></i> ⚡ Cargador Masivo (Varias Fotos)
-                    </button>
-                    <button onclick="switchAdminTab('terminal')" id="tab-btn-terminal" class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-stone-200 text-stone-700 hover:bg-stone-300 cursor-pointer">
-                        <i class="fa-solid fa-terminal mr-1"></i> Despachador Pedidos
+                        <i class="fa-solid fa-bolt mr-1"></i> ⚡ Cargador Masivo
                     </button>
                     <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-stone-200 text-stone-700 hover:bg-stone-300 cursor-pointer">
                         <i class="fa-solid fa-gear mr-1"></i> Configuración
@@ -399,7 +379,7 @@
                     <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-4 sm:p-5 rounded-2xl text-white shadow-md space-y-2">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-bolt text-yellow-200 text-xl"></i>
-                            <h4 class="font-extrabold text-base">Cargador Masivo de Imágenes</h4>
+                            <h4 class="font-extrabold text-base">Cargador Masivo de Imágenes (Opción B)</h4>
                         </div>
                         <p class="text-xs text-amber-100 leading-relaxed">
                             Selecciona múltiples fotos de tu equipo a la vez. El sistema procesará cada foto, asignará referencias consecutivas y formateará los nombres directamente.
@@ -458,19 +438,7 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 3: DESPACHADOR DE PEDIDOS -->
-                <div id="admin-sec-terminal" class="hidden bg-white p-5 rounded-2xl border border-orange-100/80 shadow-xs space-y-4">
-                    <div class="border-b border-orange-100 pb-3">
-                        <h4 class="font-extrabold text-sm text-amber-950 flex items-center gap-2">
-                            <i class="fa-solid fa-terminal text-orange-500"></i> Despachador de Pedidos de WhatsApp
-                        </h4>
-                        <p class="text-xs text-stone-500 mt-0.5">Pega aquí los mensajes de pedidos recibidos por WhatsApp para identificar los productos y ver sus fotos en grande.</p>
-                    </div>
-                    <textarea id="whatsapp-paste-terminal" rows="4" oninput="processCopiedOrder()" placeholder="Pega el texto del pedido recibido por WhatsApp..." class="w-full p-3 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50"></textarea>
-                    <div id="terminal-matched-items" class="space-y-2 pt-1"></div>
-                </div>
-
-                <!-- SECCIÓN 4: CONFIGURACIÓN -->
+                <!-- SECCIÓN 3: CONFIGURACIÓN -->
                 <div id="admin-sec-settings" class="hidden bg-white p-5 rounded-2xl border border-orange-100/80 shadow-xs space-y-4">
                     <div class="border-b border-orange-100 pb-3">
                         <h4 class="font-extrabold text-sm text-amber-950 flex items-center gap-2">
@@ -499,14 +467,14 @@
         </div>
     </div>
 
-    <!-- DRAWER DEL CARRITO -->
+    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-stone-950/60 backdrop-blur-xs z-50 transition-opacity opacity-0 pointer-events-none duration-300"></div>
     <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-        <div class="p-4 bg-gradient-to-r from-amber-950 to-orange-950 text-white flex items-center justify-between">
+        <div class="p-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white flex items-center justify-between shadow-xs">
             <div class="flex items-center gap-2">
-                <i class="fa-solid fa-basket-shopping text-orange-400"></i>
+                <i class="fa-solid fa-basket-shopping text-yellow-200"></i>
                 <h3 class="font-bold text-sm">Tu Pedido de Catálogo</h3>
             </div>
-            <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white cursor-pointer">
+            <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white cursor-pointer transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -526,7 +494,6 @@
         </div>
     </div>
 
-    <!-- MODAL LIGHTBOX / ZOOM HD -->
     <div id="image-zoom-modal" onclick="closeImageZoom()" class="fixed inset-0 bg-stone-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden cursor-pointer">
         <div class="relative max-w-xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-orange-100 flex flex-col max-h-[90vh] cursor-pointer" onclick="closeImageZoom()">
             <div class="p-4 border-b border-orange-100 flex justify-between items-center bg-amber-50/50">
@@ -554,7 +521,6 @@
         </div>
     </div>
 
-    <!-- CENTRO DE AYUDA SOL -->
     <div id="helpModalWindow" class="hidden fixed bottom-20 right-3 sm:right-6 w-[92vw] sm:w-[380px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all">
         <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-4 text-white flex justify-between items-center shadow-md shrink-0">
             <div class="flex items-center gap-2.5">
@@ -651,7 +617,7 @@
                     </div>
                 </div>
 
-                <!-- Acordeón 2: ¿Cómo hago y envío mi pedido? -->
+                <!-- Acordeón 2: ¿Cómo hago mi pedido? -->
                 <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-2xs">
                     <button onclick="toggleAccordion('acc-order')" class="w-full p-3 text-left font-extrabold text-amber-950 text-xs flex items-center justify-between cursor-pointer hover:bg-orange-50/50">
                         <span class="flex items-center gap-2"><i class="fa-solid fa-bag-shopping text-orange-500"></i> ¿Cómo hago y envío mi pedido?</span>
@@ -684,7 +650,7 @@
                 <!-- Acordeón 4: Más unidades -->
                 <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-2xs">
                     <button onclick="toggleAccordion('acc-morestock')" class="w-full p-3 text-left font-extrabold text-amber-950 text-xs flex items-center justify-between cursor-pointer hover:bg-orange-50/50">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-boxes-packing text-orange-500"></i> ¿Si necesito más unidades y no hay disponibles?</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-boxes-packing text-orange-500"></i> ¿Si necesito más productos y no aparecen disponibles?</span>
                         <i id="acc-morestock-icon" class="fa-solid fa-chevron-down text-stone-400 text-xs transition-transform"></i>
                     </button>
                     <div id="acc-morestock" class="hidden p-3 pt-2 border-t border-stone-100 text-[11px] text-stone-600 bg-stone-50/50 leading-relaxed">
@@ -696,13 +662,11 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DISCRETO DE AYUDA -->
     <button id="helpFloatingBtn" onclick="toggleHelpModal()" class="fixed bottom-16 sm:bottom-20 right-4 z-40 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3.5 py-2 rounded-full shadow-xl transition-all hover:scale-105 flex items-center gap-1.5 text-xs cursor-pointer border border-amber-300/40">
         <i class="fa-solid fa-sun text-yellow-200 text-xs"></i>
         <span class="font-bold">Ayuda</span>
     </button>
 
-    <!-- MODAL CONFIRMACIÓN -->
     <div id="confirm-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-xl space-y-4 text-center">
             <div class="w-12 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mx-auto text-xl">
@@ -719,7 +683,6 @@
 
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- PIE DE PÁGINA SUNSET CÁLIDO -->
     <footer class="sunset-banner text-amber-950 pt-10 pb-0 border-t border-orange-200/80 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-orange-200/80">
@@ -764,7 +727,6 @@
             </div>
         </div>
 
-        <!-- FRANJA DE FIRMA OSCURA ELEGANTE -->
         <div class="bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 text-amber-100 py-3.5 px-4 text-center border-t border-amber-900/50 relative overflow-hidden mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 shadow-inner">
             <div class="text-center sm:text-left">
                 <p class="text-[11px] font-bold text-amber-300 tracking-wide">Sol Digital Solutions <span class="text-stone-400 font-normal">by</span> <span class="font-serif italic text-white font-bold">EPamar</span></p>
@@ -777,14 +739,13 @@
         </div>
     </footer>
 
-    <!-- BOTÓN FLOTANTE DE CARRITO -->
     <button onclick="toggleCartDrawer()" class="fixed bottom-4 right-4 z-40 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-tr from-orange-600 to-amber-500 text-white rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center border-2 border-white cursor-pointer group">
         <i class="fa-solid fa-cart-shopping text-lg sm:text-xl group-hover:scale-110 transition-transform"></i>
         <span id="floating-cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-black w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2 border-white shadow-xs">0</span>
     </button>
 
     <script>
-        const INITIAL_SEED_PRODUCTS_TIMESTAMP = "2026-09-22T18:00:00.000Z";
+        const INITIAL_SEED_PRODUCTS_TIMESTAMP = "2026-09-22T19:00:00.000Z";
 
         const INITIAL_SEED_PRODUCTS = [
             { id: "1", ref: "SOL-101", name: "Avon Care Crema Facial Hidratante 3en1", brand: "AVON", price: 12000, stock: 2, description: "Humecta y regenera, 100g", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-care-crema-3en1-rosamosqueta-y-camelia.jpg.png", preset: "pink-maternal", active: true },
@@ -861,17 +822,17 @@
             if (storedCart) {
                 try { 
                     const parsed = JSON.parse(storedCart);
-                    // Validar y reparar cada ítem del carrito para evitar NaN o null
                     cart = Array.isArray(parsed) ? parsed.map(item => ({
                         id: String(item.id || ''),
                         qty: parseInt(item.qty) > 0 ? parseInt(item.qty) : 1
-                    })).filter(item => item.id !== '') : [];
+                    })).filter(item => item.id !== '' && !isNaN(item.qty)) : [];
                 } catch(e) { 
                     cart = []; 
                 }
             } else {
                 cart = [];
             }
+            saveCartToLocalStorage();
 
             renderBrandFilters();
             renderBgPresetPicker();
@@ -923,7 +884,7 @@
         }
 
         function switchAdminTab(tabName) {
-            ['inventory', 'batch', 'terminal', 'settings'].forEach(t => {
+            ['inventory', 'batch', 'settings'].forEach(t => {
                 const sec = document.getElementById(`admin-sec-${t}`);
                 const btn = document.getElementById(`tab-btn-${t}`);
                 if (sec) {
@@ -1159,7 +1120,7 @@
                     brand: item.brand,
                     price: item.price,
                     stock: item.stock,
-                    description: "Disponible para entrega inmediata.",
+                    description: "Disponible por catálogo.",
                     image: item.imageData,
                     preset: item.preset,
                     active: true
@@ -1336,14 +1297,12 @@
 
                 card.innerHTML = `
                     <div onclick="openImageZoom('${safeImage}', '${safeName}', '${p.brand}', '${p.ref || 'S-N'}', '$${formatPrice}', '${safeDesc}')" class="aspect-square w-full relative flex items-center justify-center p-3 overflow-hidden cursor-zoom-in ${presetObj.class}">
-                        <!-- Insignia de Marca -->
                         <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
                             <span class="bg-white/95 text-amber-950 border border-orange-200/60 text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
                                 ${p.brand}
                             </span>
                         </div>
                         
-                        <!-- Stock Simplificado -->
                         <div class="absolute top-2 right-2 z-10">
                             <span class="bg-stone-900/80 text-amber-300 text-[9px] font-black px-2 py-0.5 rounded-full shadow-2xs">
                                 Disp: ${stockCount}
@@ -1352,7 +1311,6 @@
 
                         <img src="${imgSource}" alt="${p.name}" class="max-h-full max-w-full object-contain drop-shadow-md transform group-hover:scale-105 transition-transform duration-300" onerror="this.src='${getPlaceholderSVG(p.brand)}'">
                         
-                        <!-- Lupa HD Limpia -->
                         <div class="absolute bottom-2 right-2 bg-stone-900/70 text-white w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-xs">
                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                         </div>
@@ -1364,7 +1322,7 @@
                                 ${p.name}
                             </h4>
                             <p class="text-[11px] text-stone-500 mt-1 line-clamp-1 leading-tight">
-                                ${p.description || 'Disponible para entrega inmediata.'}
+                                ${p.description || 'Disponible por catálogo.'}
                             </p>
                         </div>
                         
@@ -1569,7 +1527,7 @@
             const availableStock = prod.stock !== undefined ? prod.stock : 2;
 
             if (currentQty + 1 > availableStock) {
-                showToast(`Unidades en vitrina: ${availableStock}. ¡Escríbenos para encargar más!`, "warning");
+                showToast(`Unidades en stock: ${availableStock}. ¡Escríbenos para encargar más!`, "warning");
             }
 
             if (existing) {
@@ -1609,7 +1567,7 @@
             cart.forEach(item => {
                 const prod = products.find(p => p.id === item.id);
                 if (prod) {
-                    const qty = parseInt(item.qty) || 1;
+                    const qty = parseInt(item.qty) > 0 ? parseInt(item.qty) : 1;
                     const price = parseInt(prod.price) || 0;
                     const subtotal = price * qty;
                     total += subtotal;
@@ -1678,51 +1636,6 @@
             msg += "Hola, ¿podrías confirmarme disponibilidad para entrega? Muchas gracias.";
 
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function processCopiedOrder() {
-            const terminalInput = document.getElementById("whatsapp-paste-terminal");
-            const text = terminalInput ? terminalInput.value.toLowerCase() : "";
-            const terminal = document.getElementById("terminal-matched-items");
-            if (!terminal) return;
-            
-            terminal.innerHTML = "";
-            if (!text) return;
-
-            const matched = [];
-            products.forEach(p => {
-                if (p.ref && text.includes(p.ref.toLowerCase())) {
-                    matched.push(p);
-                } else if (text.includes((p.name || '').toLowerCase())) {
-                    matched.push(p);
-                }
-            });
-
-            matched.forEach(p => {
-                const formatPrice = p.price.toLocaleString('es-CO');
-                const imgSource = fixGitHubRawUrl(p.image) || getPlaceholderSVG(p.brand);
-                const safeName = (p.name || '').replace(/'/g, "\\'");
-                const safeDesc = (p.description || '').replace(/'/g, "\\'");
-                const safeImage = (imgSource || '').replace(/'/g, "\\'");
-
-                const div = document.createElement("div");
-                div.className = "p-2.5 bg-white border border-orange-100 rounded-xl flex items-center justify-between gap-2 shadow-2xs";
-                div.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <div onclick="openImageZoom('${safeImage}', '${safeName}', '${p.brand}', '${p.ref}', '$${formatPrice}', '${safeDesc}')" class="w-10 h-10 rounded-lg border flex items-center justify-center p-0.5 cursor-zoom-in bg-stone-50">
-                            <img src="${imgSource}" class="max-h-full max-w-full object-contain">
-                        </div>
-                        <div>
-                            <h5 class="font-extrabold text-xs text-amber-950 line-clamp-1">${p.name}</h5>
-                            <span class="text-[9px] text-stone-500 font-bold">Ref: ${p.ref} | $${formatPrice}</span>
-                        </div>
-                    </div>
-                    <button onclick="openImageZoom('${safeImage}', '${safeName}', '${p.brand}', '${p.ref}', '$${formatPrice}', '${safeDesc}')" class="px-2 py-1 bg-orange-100 hover:bg-orange-200 text-orange-800 font-bold text-[10px] rounded-lg transition-all shrink-0 cursor-pointer">
-                        <i class="fa-solid fa-magnifying-glass-plus"></i> Ver
-                    </button>
-                `;
-                terminal.appendChild(div);
-            });
         }
 
         function exportDatabaseToClipboard() {
@@ -1817,7 +1730,17 @@
 
         function toggleCartDrawer() {
             const drawer = document.getElementById("cart-drawer");
-            if (drawer) drawer.classList.toggle("translate-x-full");
+            const backdrop = document.getElementById("cart-drawer-backdrop");
+            if (drawer && backdrop) {
+                const isOpen = !drawer.classList.contains("translate-x-full");
+                if (isOpen) {
+                    drawer.classList.add("translate-x-full");
+                    backdrop.classList.add("opacity-0", "pointer-events-none");
+                } else {
+                    drawer.classList.remove("translate-x-full");
+                    backdrop.classList.remove("opacity-0", "pointer-events-none");
+                }
+            }
         }
 
         function toggleHelpModal() {
@@ -1840,7 +1763,7 @@
             document.getElementById("zoom-brand-badge").innerText = brand;
             document.getElementById("zoom-ref-badge").innerText = `Ref: ${ref}`;
             document.getElementById("zoom-product-price").innerText = price;
-            document.getElementById("zoom-product-desc").innerText = desc || 'Disponible para entrega inmediata.';
+            document.getElementById("zoom-product-desc").innerText = desc || 'Disponible por catálogo.';
 
             const modal = document.getElementById("image-zoom-modal");
             if (modal) modal.classList.remove("hidden");
