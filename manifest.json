@@ -1,0 +1,15 @@
+{
+"name": "Sol - Venta por Catálogo",
+"short_name": "Sol Kiosko",
+"start_url": "./index.html",
+"display": "standalone",
+"background_color": "#fffaf5",
+"theme_color": "#ea580c",
+"icons": [
+{
+"src": "./sol-logo.jpg",
+"sizes": "512x512",
+"type": "image/jpeg"
+}
+]
+}
