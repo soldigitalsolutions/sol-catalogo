@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sol - Venta por Catálogo</title>
-    
+
     <!-- Meta etiquetas Open Graph para WhatsApp y Redes -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sol - Venta por Catálogo">
@@ -25,7 +25,7 @@
     <meta name="apple-mobile-web-app-title" content="Vitrina Sol">
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./sol-logo.jpg">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +73,7 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8), 0 0 4px rgba(251, 191, 36, 0.6);
         }
 
-        /* Recorte automático del borde inferior para eliminar sombras oscuras de fotos */
+        /* Recorte automático inteligente del borde negro inferior de la foto */
         .product-img-clean {
             clip-path: inset(0 0 3.2% 0);
         }
@@ -93,6 +93,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-orange-500 selection:text-white">
 
+    <!-- Top Glow Bar -->
     <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 h-2 w-full shadow-xs"></div>
 
     <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-orange-100 shadow-xs">
@@ -160,6 +161,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full space-y-6">
+        <!-- Pasos interactivos -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-gradient-to-r from-orange-50/90 via-amber-50/70 to-orange-50/90 p-4 rounded-2xl border border-orange-200/60 shadow-xs">
             <div class="flex items-center space-x-3 p-3 bg-white/80 rounded-xl border border-orange-100/60">
                 <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center font-black shadow-xs text-base shrink-0">
@@ -190,6 +192,7 @@
             </div>
         </section>
 
+        <!-- Filtros y Búsqueda -->
         <section class="bg-white p-4 rounded-2xl shadow-xs border border-orange-100 space-y-3">
             <div class="flex items-center justify-between">
                 <h3 class="text-xs font-extrabold uppercase tracking-wider text-amber-900/80 flex items-center gap-1.5">
@@ -527,11 +530,12 @@
         </div>
     </div>
 
+    <!-- Centro de Ayuda Modal -->
     <div id="helpModalBackdrop" onclick="toggleHelpModal()" class="fixed inset-0 bg-stone-950/40 backdrop-blur-xs z-40 transition-opacity opacity-0 pointer-events-none duration-300"></div>
-    <div id="helpModalWindow" class="hidden fixed bottom-20 right-3 sm:right-6 w-[92vw] sm:w-[380px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden">
+    <div id="helpModalWindow" class="hidden fixed bottom-20 right-3 sm:right-6 w-[92vw] sm:w-[390px] max-h-[82vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden">
         <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-4 text-white flex justify-between items-center shadow-md shrink-0">
             <div class="flex items-center gap-2.5">
-                <div class="bg-white/20 p-2 rounded-xl">
+                <div class="bg-white/20 p-2 rounded-xl flex items-center justify-center">
                     <i class="fa-solid fa-sun text-yellow-200 text-lg"></i>
                 </div>
                 <div>
@@ -543,33 +547,180 @@
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
         </div>
-        <div class="p-4 overflow-y-auto space-y-3 bg-orange-50/20 text-xs text-stone-700">
-            <button onclick="shareKiosco()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-2xl font-bold flex items-center justify-between shadow-xs hover:shadow transition-all cursor-pointer text-xs">
-                <span class="flex items-center gap-2"><i class="fa-solid fa-share-nodes text-yellow-200 text-sm"></i> Compartir App con amigos</span>
-                <i class="fa-solid fa-chevron-right text-xs"></i>
+
+        <div class="p-4 overflow-y-auto space-y-3 bg-orange-50/20 text-xs text-stone-700 no-scrollbar">
+            <!-- Botón de compartir en el modal -->
+            <button onclick="shareKiosco()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white p-3 rounded-2xl font-bold flex items-center justify-between shadow-xs transition-all cursor-pointer text-xs">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-white/20 flex items-center justify-center text-yellow-200 shrink-0">
+                        <i class="fa-solid fa-share-nodes text-sm"></i>
+                    </div>
+                    <span>Compartir App con amigos</span>
+                </span>
+                <i class="fa-solid fa-chevron-right text-xs text-amber-200"></i>
             </button>
+
+            <!-- PWA Guide / Dispositivos -->
+            <button onclick="toggleHelpAnswer('help-pwa')" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-2xs font-bold transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                        <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+                    </div>
+                    <span class="text-amber-950">¿Cómo tener la App en tu celular o PC?</span>
+                </span>
+                <i class="fa-solid fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+
+            <div id="help-pwa" class="hidden bg-orange-50/80 p-3.5 rounded-2xl text-stone-700 text-[11px] border border-orange-200 space-y-3 leading-relaxed">
+                <div id="detectedDeviceBadge" class="bg-white p-2.5 rounded-xl border border-orange-200/80 text-[11px] font-bold text-stone-700 flex items-center gap-2 shadow-2xs">
+                    <i class="fa-solid fa-sun text-orange-500"></i> Guías de Instalación
+                </div>
+
+                <div class="flex gap-1 bg-orange-100/60 p-1 rounded-xl">
+                    <button id="tab-btn-ios" onclick="showGuide('ios')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-stone-600 transition flex items-center justify-center gap-1 cursor-pointer">
+                        <i class="fa-brands fa-apple"></i> iPhone
+                    </button>
+                    <button id="tab-btn-android" onclick="showGuide('android')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-stone-600 transition flex items-center justify-center gap-1 cursor-pointer">
+                        <i class="fa-brands fa-android text-emerald-600"></i> Android
+                    </button>
+                    <button id="tab-btn-desktop" onclick="showGuide('desktop')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-stone-600 transition flex items-center justify-center gap-1 cursor-pointer">
+                        <i class="fa-solid fa-desktop text-sky-600"></i> PC
+                    </button>
+                </div>
+
+                <div id="guide-ios" class="hidden bg-white p-3 rounded-2xl border border-stone-200 space-y-2 text-stone-700">
+                    <div class="font-extrabold text-stone-900 text-xs flex items-center gap-1.5 border-b pb-1">
+                        <i class="fa-brands fa-apple text-sm"></i> Pasos para iPhone (Safari)
+                    </div>
+                    <p class="text-[10px]">1. Toca <strong>Compartir</strong> <i class="fa-solid fa-arrow-up-from-bracket text-sky-600"></i> abajo en Safari.</p>
+                    <p class="text-[10px]">2. Elige <strong>"Agregar a inicio"</strong> <i class="fa-regular fa-square-plus"></i>.</p>
+                    <p class="text-[10px]">3. Presiona <strong>"Agregar"</strong> arriba a la derecha.</p>
+                </div>
+
+                <div id="guide-android" class="hidden bg-white p-3 rounded-2xl border border-stone-200 space-y-2 text-stone-700">
+                    <div class="font-extrabold text-stone-900 text-xs flex items-center gap-1.5 border-b pb-1">
+                        <i class="fa-brands fa-android text-emerald-600 text-sm"></i> Pasos para Android (Chrome)
+                    </div>
+                    <p class="text-[10px]">1. Toca los <strong>3 puntos</strong> <i class="fa-solid fa-ellipsis-vertical"></i> arriba a la derecha.</p>
+                    <p class="text-[10px]">2. Selecciona <strong>"Instalar aplicación"</strong> o <strong>"Agregar a pantalla principal"</strong>.</p>
+                </div>
+
+                <div id="guide-desktop" class="hidden bg-white p-3 rounded-2xl border border-stone-200 space-y-2 text-stone-700">
+                    <div class="font-extrabold text-stone-900 text-xs flex items-center gap-1.5 border-b pb-1">
+                        <i class="fa-solid fa-desktop text-sky-600 text-sm"></i> Pasos para PC
+                    </div>
+                    <p class="text-[10px]">Haz clic en el ícono de <strong>Instalar App</strong> <i class="fa-solid fa-download text-sky-600"></i> en la barra de direcciones del navegador.</p>
+                </div>
+            </div>
+
+            <!-- Preguntas Frecuentes Expandibles -->
+            <button onclick="toggleHelpAnswer('help-order')" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-2xs font-bold transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                        <i class="fa-solid fa-basket-shopping text-sm"></i>
+                    </div>
+                    <span class="text-amber-950">¿Cómo hacer un pedido?</span>
+                </span>
+                <i class="fa-solid fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="help-order" class="hidden bg-white p-3.5 rounded-2xl border border-orange-100 space-y-1 text-[11px] text-stone-600">
+                <p>Explora la vitrina, haz clic en "Agregar" en los artículos que deseas y presiona "Pedido" arriba para enviarlo directamente a WhatsApp.</p>
+            </div>
+
+            <!-- Pregunta para solicitar más unidades si el stock indicado no alcanza -->
+            <button onclick="toggleHelpAnswer('help-more-units')" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-2xs font-bold transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                        <i class="fa-solid fa-boxes-stacked text-sm"></i>
+                    </div>
+                    <span class="text-amber-950">¿Necesitas más unidades de un producto?</span>
+                </span>
+                <i class="fa-solid fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="help-more-units" class="hidden bg-white p-3.5 rounded-2xl border border-orange-100 space-y-1 text-[11px] text-stone-600">
+                <p>Si ves disponible cierta cantidad en la vitrina pero necesitas más unidades de algún producto, ponte en contacto con nosotros por WhatsApp y te confirmamos disponibilidad.</p>
+            </div>
+
+            <button onclick="toggleHelpAnswer('help-payments')" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-2xs font-bold transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                        <i class="fa-solid fa-credit-card text-sm"></i>
+                    </div>
+                    <span class="text-amber-950">¿Cómo funcionan pagos y envíos?</span>
+                </span>
+                <i class="fa-solid fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="help-payments" class="hidden bg-white p-3.5 rounded-2xl border border-orange-100 space-y-1 text-[11px] text-stone-600">
+                <p>• Puedes cancelar por Nequi, Llave / Bre-B o efectivo.</p>
+                <p>• Los plazos de pago y la entrega se coordinan directamente por WhatsApp con el asesor.</p>
+            </div>
         </div>
     </div>
 
+    <!-- Botón flotante de ayuda -->
     <button id="helpFloatingBtn" onclick="toggleHelpModal()" class="fixed bottom-16 sm:bottom-20 right-4 z-40 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3.5 py-2 rounded-full shadow-xl transition-all hover:scale-105 flex items-center gap-1.5 text-xs cursor-pointer border border-amber-300/40">
         <i class="fa-solid fa-sun text-yellow-200 text-xs"></i>
         <span class="font-bold">Ayuda</span>
     </button>
 
-    <footer class="sunset-banner text-amber-950 pt-10 pb-0 border-t border-orange-200/80 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pb-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/60 backdrop-blur-xs p-5 rounded-2xl border border-orange-200/50 shadow-xs">
-                <div>
-                    <h4 class="font-extrabold text-amber-950 text-sm">¿Te gusta nuestra App de Kiosco?</h4>
-                    <p class="text-xs text-stone-600">Compártela fácilmente con tus clientes o vendedoras por WhatsApp.</p>
+    <!-- Footer estilo 3 columnas (Exacto a Imagen 2) -->
+    <footer class="sunset-banner text-amber-950 pt-8 pb-0 border-t border-orange-200/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pb-6">
+            <!-- Grid de 3 columnas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                <!-- Columna 1: Isotipo + Título + Descripción -->
+                <div class="space-y-2 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2.5">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center text-sm font-bold shadow-xs">
+                            <i class="fa-solid fa-sun text-yellow-100"></i>
+                        </div>
+                        <h4 class="font-extrabold text-amber-950 text-base md:text-lg serif-title">Sol Venta por Catálogo</h4>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed font-medium">
+                        Distribuidora independiente autorizada. Facilitando lo mejor en perfumería, cosmética y cuidado personal con la seguridad de siempre.
+                    </p>
                 </div>
-                <button onclick="shareKiosco()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-6 py-3 rounded-2xl shadow-md transition-all flex items-center gap-2 text-xs cursor-pointer shrink-0">
+
+                <!-- Columna 2: Líneas de Distribución -->
+                <div class="space-y-2 text-center md:text-left">
+                    <h5 class="text-xs font-black uppercase tracking-wider text-amber-950">Líneas de Distribución</h5>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-1.5 pt-1">
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">AVON</span>
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">YANBAL</span>
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">NATURA</span>
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">CYZONE</span>
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">ÉSIKA</span>
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">L'BEL</span>
+                        <span class="bg-white/90 border border-orange-200/80 px-2.5 py-1 rounded-xl text-[10px] font-extrabold text-amber-950 shadow-2xs">ALIADOS</span>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Contacto de Ventas -->
+                <div class="space-y-2 text-center md:text-left">
+                    <h5 class="text-xs font-black uppercase tracking-wider text-amber-950">Contacto de Ventas</h5>
+                    <div class="space-y-1 text-xs text-stone-700 font-medium">
+                        <p class="flex items-center justify-center md:justify-start gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+                            <span>WhatsApp: <strong class="text-amber-950">3005919059</strong></span>
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start gap-2 text-stone-500 italic text-[11px]">
+                            <i class="fa-solid fa-hand-holding-heart text-orange-500"></i>
+                            <span>Trayectoria y confianza desde 2004.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Píldora Naranja Compartir App Centrado -->
+            <div class="pt-4 flex justify-center">
+                <button onclick="shareKiosco()" class="inline-flex bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-8 py-3 rounded-full shadow-md transition-all items-center gap-2.5 text-xs cursor-pointer hover:scale-105 active:scale-95 border border-amber-300/30">
                     <i class="fa-solid fa-share-nodes text-yellow-200 text-sm"></i>
                     <span>Compartir App</span>
                 </button>
             </div>
         </div>
 
+        <!-- Franja oscura inferior -->
         <div class="bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 text-amber-100 py-3.5 px-4 text-center border-t border-amber-900/50 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 shadow-inner">
             <div class="text-center sm:text-left">
                 <p class="text-[11px] font-bold text-amber-300 tracking-wide">Sol Digital Solutions <span class="text-stone-400 font-normal">by</span> <span class="font-serif italic text-white font-bold">EPamar</span></p>
@@ -582,8 +733,6 @@
     </footer>
 
     <script>
-        const INITIAL_SEED_PRODUCTS = [];
-
         const BRANDS = ["AVON", "YANBAL", "NATURA", "CYZONE", "ÉSIKA", "L'BEL", "ALIADOS"];
         const BRAND_SERIES = { "AVON": 100, "CYZONE": 200, "YANBAL": 300, "ÉSIKA": 400, "NATURA": 500, "L'BEL": 600, "ALIADOS": 700 };
 
@@ -638,6 +787,7 @@
             updateAdminInventoryView();
             updateCartUI();
             suggestNextReference();
+            detectOSAndGuide();
 
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js').catch(function(){});
@@ -855,11 +1005,9 @@
 
                 const delBtn = document.createElement("button");
                 delBtn.className = "w-7 h-7 bg-red-50 text-red-600 rounded-lg flex items-center justify-center cursor-pointer hover:bg-red-100 transition-colors";
-                
                 const delIcon = document.createElement("i");
                 delIcon.className = "fa-solid fa-trash-can";
                 delBtn.appendChild(delIcon);
-
                 delBtn.onclick = function() { removeBatchItem(item.id); };
 
                 right.appendChild(priceWrap);
@@ -1020,14 +1168,11 @@
                 grid.innerHTML = "";
                 const emptyDiv = document.createElement("div");
                 emptyDiv.className = "col-span-full py-16 text-center text-stone-400";
-                
                 const icon = document.createElement("i");
                 icon.className = "fa-solid fa-cloud-sun text-5xl mb-3 text-orange-200 block";
-                
                 const textMsg = document.createElement("p");
                 textMsg.className = "text-base font-bold text-stone-600";
                 textMsg.innerText = "No hay productos en esta selección";
-                
                 emptyDiv.appendChild(icon);
                 emptyDiv.appendChild(textMsg);
                 grid.appendChild(emptyDiv);
@@ -1085,29 +1230,22 @@
                 bottomRow.className = "mt-2.5 pt-2.5 border-t border-stone-100 flex items-center justify-between";
 
                 const priceBox = document.createElement("div");
-                
                 const priceLbl = document.createElement("span");
                 priceLbl.className = "text-[9px] text-stone-400 uppercase font-bold block";
                 priceLbl.innerText = "Precio";
-                
                 const priceVal = document.createElement("span");
                 priceVal.className = "font-extrabold text-orange-600 text-xs md:text-sm";
                 priceVal.innerText = `$${formatPrice}`;
-                
                 priceBox.appendChild(priceLbl);
                 priceBox.appendChild(priceVal);
 
                 const addBtn = document.createElement("button");
                 addBtn.className = "bg-gradient-to-tr from-amber-50 to-orange-100 text-orange-800 border border-orange-200 px-2.5 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1 cursor-pointer hover:bg-orange-100 transition-colors";
-                
                 const cartIcon = document.createElement("i");
                 cartIcon.className = "fa-solid fa-cart-plus";
-                
                 const cartTxt = document.createTextNode(" Agregar");
-                
                 addBtn.appendChild(cartIcon);
                 addBtn.appendChild(cartTxt);
-                
                 addBtn.onclick = function() { addToCart(p.id); };
 
                 bottomRow.appendChild(priceBox);
@@ -1194,11 +1332,10 @@
 
                 const hoverOverlay = document.createElement("div");
                 hoverOverlay.className = "absolute inset-0 bg-stone-900/40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity";
-                
                 const hoverIcon = document.createElement("i");
                 hoverIcon.className = "fa-solid fa-magnifying-glass-plus text-white text-xs";
-                
                 hoverOverlay.appendChild(hoverIcon);
+
                 imgContainer.appendChild(img);
                 imgContainer.appendChild(hoverOverlay);
 
@@ -1213,15 +1350,12 @@
 
                 const metaRow = document.createElement("div");
                 metaRow.className = "flex items-center gap-1.5";
-                
                 const refSpan = document.createElement("span");
                 refSpan.className = "bg-amber-100 text-amber-950 font-bold px-1.5 py-0.5 text-[9px] rounded shrink-0";
                 refSpan.innerText = `Ref: ${p.ref}`;
-                
                 const brandSpan = document.createElement("span");
                 brandSpan.className = "text-[10px] text-stone-500 font-bold block";
                 brandSpan.innerText = p.brand;
-                
                 metaRow.appendChild(refSpan);
                 metaRow.appendChild(brandSpan);
 
@@ -1235,40 +1369,33 @@
 
                 const stockWrap = document.createElement("div");
                 stockWrap.className = "flex items-center gap-1";
-                
                 const stockLabel = document.createElement("span");
                 stockLabel.className = "text-[10px] font-bold text-stone-400";
                 stockLabel.innerText = "Disp:";
-                
                 const stockInput = document.createElement("input");
                 stockInput.type = "number";
                 stockInput.value = stockVal;
                 stockInput.className = "w-14 px-2 py-1 text-xs border rounded-lg bg-white font-bold text-center focus:outline-none focus:ring-1 focus:ring-orange-500";
                 stockInput.onchange = function(e) { updateStock(p.id, e.target.value); };
-                
                 stockWrap.appendChild(stockLabel);
                 stockWrap.appendChild(stockInput);
 
                 const priceWrap = document.createElement("div");
                 priceWrap.className = "flex items-center gap-1";
-                
                 const priceLabel = document.createElement("span");
                 priceLabel.className = "text-[10px] font-bold text-stone-400";
                 priceLabel.innerText = "$";
-                
                 const priceInput = document.createElement("input");
                 priceInput.type = "number";
                 priceInput.value = p.price;
                 priceInput.className = "w-20 px-2 py-1 text-xs border rounded-lg bg-white font-bold focus:outline-none focus:ring-1 focus:ring-orange-500";
                 priceInput.onchange = function(e) { updatePrice(p.id, e.target.value); };
-                
                 priceWrap.appendChild(priceLabel);
                 priceWrap.appendChild(priceInput);
 
                 const presetSelect = document.createElement("select");
                 presetSelect.className = "px-2 py-1 text-[10px] border rounded-lg bg-white font-semibold cursor-pointer focus:outline-none focus:ring-1 focus:ring-orange-500";
                 presetSelect.onchange = function(e) { updatePreset(p.id, e.target.value); };
-                
                 BACKGROUND_PRESETS.forEach(b => {
                     const opt = document.createElement("option");
                     opt.value = b.id;
@@ -1286,10 +1413,8 @@
                 const delBtn = document.createElement("button");
                 delBtn.type = "button";
                 delBtn.className = "w-7 h-7 bg-red-50 text-red-600 rounded-lg flex items-center justify-center cursor-pointer hover:bg-red-100 transition-colors";
-                
                 const delListIcon = document.createElement("i");
                 delListIcon.className = "fa-solid fa-trash-can";
-                
                 delBtn.appendChild(delListIcon);
                 delBtn.onclick = function() { confirmDeleteProduct(p.id); };
 
@@ -1324,13 +1449,11 @@
             if (!p) return;
             
             currentZoomContext = { id: id, type: 'product' };
-
             const imgUrl = fixGitHubRawUrl(p.image) || getPlaceholderSVG(p.brand);
             
             document.getElementById("zoom-modal-img").src = imgUrl;
             document.getElementById("zoom-brand-badge").innerText = p.brand;
             document.getElementById("zoom-ref-badge").innerText = `Ref: ${p.ref || 'S-N'}`;
-            
             document.getElementById("zoom-product-title").innerText = p.name;
             
             const descEl = document.getElementById("zoom-product-desc");
@@ -1548,12 +1671,9 @@
             
             let htmlDoc = document.documentElement.outerHTML;
             
-            const seedRegex = /const INITIAL_SEED_PRODUCTS = \[[\s\S]*?\];/;
-            htmlDoc = htmlDoc.replace(seedRegex, `const INITIAL_SEED_PRODUCTS = ${JSON.stringify(products, null, 4)};`);
-            
-            const blob = new Blob(["<!DOCTYPE html>\n" + htmlDoc], { type: "text/html" });
+            const blobFile = new Blob(["<!DOCTYPE html>\n" + htmlDoc], { type: "text/html" });
             const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
+            link.href = URL.createObjectURL(blobFile);
             link.download = "index.html";
             document.body.appendChild(link);
             link.click();
@@ -1582,6 +1702,42 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
             showToast("¡Enlace copiado!", "success");
+        }
+
+        function detectOSAndGuide() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            const isAndroid = /android/i.test(ua);
+            const badge = document.getElementById("detectedDeviceBadge");
+
+            if (isIOS) {
+                if (badge) badge.innerHTML = '<i class="fa-brands fa-apple text-stone-800"></i> Tu dispositivo: <strong>iPhone / iPad</strong>';
+                showGuide('ios');
+            } else if (isAndroid) {
+                if (badge) badge.innerHTML = '<i class="fa-brands fa-android text-emerald-600"></i> Tu dispositivo: <strong>Android</strong>';
+                showGuide('android');
+            } else {
+                if (badge) badge.innerHTML = '<i class="fa-solid fa-desktop text-sky-600"></i> Tu dispositivo: <strong>Computador / PC</strong>';
+                showGuide('desktop');
+            }
+        }
+
+        function showGuide(type) {
+            ['ios', 'android', 'desktop'].forEach(t => {
+                const el = document.getElementById(`guide-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (el) el.classList.toggle('hidden', t !== type);
+                if (btn) {
+                    btn.className = t === type 
+                        ? "flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold bg-orange-500 text-white shadow-2xs transition flex items-center justify-center gap-1 cursor-pointer"
+                        : "flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-stone-600 bg-white/70 hover:bg-white transition flex items-center justify-center gap-1 cursor-pointer";
+                }
+            });
+        }
+
+        function toggleHelpAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
         }
 
         function toggleAdminModal() { document.getElementById("admin-modal").classList.toggle("hidden"); }
