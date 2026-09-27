@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sol - Venta por Catálogo</title>
+    <title>Sol - Venta por Catálogo | Kiosko Digital</title>
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sol - Venta por Catálogo">
-    <meta property="og:description" content="Productos de belleza, cosméticos y perfumería por catálogo.">
-    <meta property="og:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.png">
-    <meta property="og:site_name" content="Vitrina Sol">
+    <meta property="og:title" content="Sol - Venta por Catálogo | Kiosko Digital">
+    <meta property="og:description" content="Catálogo digital interactivo de perfumería, cosmética y cuidado personal. Haz tu pedido directo por WhatsApp.">
+    <meta property="og:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://soldigitalsolutions.github.io/revistas-digitales/">
+    <meta property="og:site_name" content="Sol Kiosko Digital">
+
+    <!-- Meta Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sol - Venta por Catálogo | Kiosko Digital">
+    <meta name="twitter:description" content="Catálogo digital interactivo de perfumería, cosmética y cuidado personal.">
+    <meta name="twitter:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.jpg">
 
     <meta name="theme-color" content="#ea580c">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Vitrina Sol">
+    <meta name="apple-mobile-web-app-title" content="Sol Kiosko">
+    <link rel="apple-touch-icon" href="./sol-logo.jpg">
+    <link rel="icon" type="image/jpeg" href="./sol-logo.jpg">
     <link rel="manifest" href="./manifest.json">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,6 +43,12 @@
 
         .serif-title { font-family: 'Playfair Display', serif; }
         .handwritten { font-family: 'Great Vibes', cursive; }
+
+        /* Auto-crop for bottom edge shadows on photo backgrounds */
+        .product-img-clean {
+            object-fit: contain;
+            clip-path: inset(0 0 3.2% 0);
+        }
 
         @keyframes sunRotate {
             0% { transform: rotate(0deg); }
@@ -145,7 +162,7 @@
             </div>
 
             <h2 class="text-2xl md:text-3xl font-black text-sunset-brand uppercase tracking-wider serif-title leading-tight">
-                VENTA POR CATÁLOGO
+                Venta por Catálogo
             </h2>
 
             <div>
@@ -282,8 +299,8 @@
                         <form id="add-product-form" onsubmit="handleNewProduct(event)" class="space-y-3.5">
                             <div class="grid grid-cols-3 gap-2">
                                 <div class="col-span-2">
-                                    <label class="block text-[11px] font-bold text-stone-600 mb-1">Nombre *</label>
-                                    <input type="text" id="prod-name" required placeholder="Ej. Avon Care Crema" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50">
+                                    <label class="block text-[11px] font-bold text-stone-600 mb-1">Nombre del Producto *</label>
+                                    <input type="text" id="prod-name" required placeholder="Ej. Crema Humectante Rosas 100g" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50">
                                 </div>
                                 <div>
                                     <label class="block text-[11px] font-bold text-stone-600 mb-1">Ref. *</label>
@@ -302,23 +319,23 @@
                                         <option value="CYZONE">CYZONE</option>
                                         <option value="ÉSIKA">ÉSIKA</option>
                                         <option value="L'BEL">L'BEL</option>
-                                        <option value="Aliados">Aliados</option>
+                                        <option value="ALIADOS">ALIADOS</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-[11px] font-bold text-stone-600 mb-1">Stock (Unid) *</label>
-                                    <input type="number" id="prod-stock" required value="2" min="0" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50 font-bold text-center">
+                                    <input type="number" id="prod-stock" required value="1" min="0" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50 font-bold text-center">
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-[11px] font-bold text-stone-600 mb-1">Precio (COP) *</label>
-                                <input type="number" id="prod-price" required placeholder="12000" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50 font-bold">
+                                <input type="number" id="prod-price" required placeholder="0" value="0" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50 font-bold">
                             </div>
 
                             <div>
                                 <label class="block text-[11px] font-bold text-stone-600 mb-1">Descripción corta (Opcional)</label>
-                                <textarea id="prod-desc" rows="2" placeholder="Ej. Humecta y regenera, 100g" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50"></textarea>
+                                <textarea id="prod-desc" rows="2" placeholder="Ej. Humecta y regenera la piel" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none bg-stone-50/50"></textarea>
                             </div>
 
                             <div class="bg-orange-50/50 p-3.5 rounded-xl border border-orange-100">
@@ -381,7 +398,7 @@
                             <h4 class="font-extrabold text-base">Cargador Masivo de Imágenes para GitHub</h4>
                         </div>
                         <p class="text-xs text-amber-100 leading-relaxed">
-                            Selecciona múltiples fotos de tu equipo a la vez. El sistema procesará cada foto, asignará referencias consecutivas y formateará los nombres directamente.
+                            Selecciona múltiples fotos de tu equipo a la vez. El sistema procesará cada foto, asignará referencias consecutivas y te permitirá colocar el nombre del producto, precio y stock de manera rápida.
                         </p>
                     </div>
 
@@ -396,16 +413,16 @@
                                     <option value="CYZONE">CYZONE</option>
                                     <option value="ÉSIKA">ÉSIKA</option>
                                     <option value="L'BEL">L'BEL</option>
-                                    <option value="Aliados">Aliados</option>
+                                    <option value="ALIADOS">ALIADOS</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-stone-700 mb-1">Precio Predeterminado ($ COP)</label>
-                                <input type="number" id="batch-default-price" value="15000" onchange="updateBatchPriceForAll()" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl font-bold bg-stone-50">
+                                <input type="number" id="batch-default-price" value="0" onchange="updateBatchPriceForAll()" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl font-bold bg-stone-50">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-stone-700 mb-1">Stock Inicial (Unidades)</label>
-                                <input type="number" id="batch-default-stock" value="2" onchange="updateBatchStockForAll()" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl font-bold bg-stone-50 text-center">
+                                <input type="number" id="batch-default-stock" value="1" onchange="updateBatchStockForAll()" class="w-full px-3 py-2 text-xs border border-stone-200 rounded-xl font-bold bg-stone-50 text-center">
                             </div>
                         </div>
 
@@ -428,7 +445,7 @@
                                 </div>
                             </div>
 
-                            <div id="batch-items-list" class="space-y-2.5 max-h-[350px] overflow-y-auto pr-1"></div>
+                            <div id="batch-items-list" class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1"></div>
 
                             <button onclick="saveAllBatchProducts()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 text-xs cursor-pointer">
                                 <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Insertar Todo el Lote a la Vitrina Directamente
@@ -492,8 +509,8 @@
         </div>
     </div>
 
-    <div id="image-zoom-modal" onclick="closeImageZoom()" class="fixed inset-0 bg-stone-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden cursor-pointer">
-        <div class="relative max-w-xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-orange-100 flex flex-col max-h-[90vh] cursor-pointer" onclick="event.stopPropagation()">
+    <div id="image-zoom-modal" onclick="closeImageZoom()" class="fixed inset-0 bg-stone-950/85 backdrop-blur-md z-[100] flex items-center justify-center p-4 hidden cursor-pointer">
+        <div class="relative max-w-2xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-orange-100 flex flex-col max-h-[90vh] cursor-pointer" onclick="event.stopPropagation()">
             <div class="p-4 border-b border-orange-100 flex justify-between items-center bg-amber-50/50">
                 <div class="flex items-center gap-2">
                     <span id="zoom-brand-badge" class="bg-orange-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase"></span>
@@ -503,17 +520,44 @@
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
-            <div class="p-6 flex-grow flex items-center justify-center bg-stone-50/50 overflow-auto min-h-[250px] cursor-pointer" onclick="closeImageZoom()">
-                <img id="zoom-modal-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'/>" class="max-h-[60vh] max-w-full object-contain drop-shadow-xl rounded-xl">
+            
+            <div class="p-4 flex-grow flex items-center justify-center bg-stone-50/50 overflow-auto min-h-[300px]">
+                <img id="zoom-modal-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="max-h-[60vh] max-w-full object-contain rounded-2xl border border-stone-200/50 bg-white product-img-clean">
             </div>
-            <div class="p-4 border-t border-orange-100 bg-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                <div>
+
+            <!-- Public View Footer (Strictly for Public Catalog Users) -->
+            <div id="zoom-public-footer" class="p-4 border-t border-orange-100 bg-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div class="w-full">
                     <h3 id="zoom-product-title" class="font-extrabold text-amber-950 text-sm sm:text-base serif-title"></h3>
-                    <p id="zoom-product-desc" class="text-xs text-stone-500 mt-0.5"></p>
+                    <p id="zoom-product-desc" class="text-xs text-stone-500 mt-0.5 hidden"></p>
                 </div>
                 <div class="text-left sm:text-right shrink-0">
                     <span class="text-[9px] text-stone-400 font-bold uppercase block">Precio</span>
                     <span id="zoom-product-price" class="text-lg font-black text-orange-600"></span>
+                </div>
+            </div>
+
+            <!-- Admin Zoom Quick Edit Panel (Strictly for Admin Mode) -->
+            <div id="zoom-admin-footer" class="p-4 border-t border-orange-100 bg-amber-50/80 hidden space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-black text-amber-950 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-pen-to-square text-orange-500"></i> Edición Rápida en Zoom
+                    </span>
+                    <span class="text-[10px] text-stone-500 font-bold">Modifica el producto mientras ves la foto ampliada</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                    <div class="sm:col-span-6">
+                        <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Nombre Visible del Producto:</label>
+                        <input type="text" id="zoom-edit-name" oninput="handleZoomFieldChange('name', this.value)" placeholder="Ej. Temptation Parfum 100ml" class="w-full px-3 py-1.5 text-xs bg-white border border-stone-200 rounded-xl font-bold text-amber-950 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Precio ($ COP):</label>
+                        <input type="number" id="zoom-edit-price" oninput="handleZoomFieldChange('price', this.value)" placeholder="0" class="w-full px-3 py-1.5 text-xs bg-white border border-stone-200 rounded-xl font-bold focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Stock (Unid):</label>
+                        <input type="number" id="zoom-edit-stock" oninput="handleZoomFieldChange('stock', this.value)" placeholder="1" class="w-full px-3 py-1.5 text-xs bg-white border border-stone-200 rounded-xl font-bold text-center focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                    </div>
                 </div>
             </div>
         </div>
@@ -701,7 +745,7 @@
                         <button onclick="filterByBrand('CYZONE')" class="px-2.5 py-1 text-[11px] font-bold bg-white/80 hover:bg-orange-600 text-amber-950 hover:text-white rounded-lg transition-colors border border-orange-200/80 shadow-2xs cursor-pointer">CYZONE</button>
                         <button onclick="filterByBrand('ÉSIKA')" class="px-2.5 py-1 text-[11px] font-bold bg-white/80 hover:bg-orange-600 text-amber-950 hover:text-white rounded-lg transition-colors border border-orange-200/80 shadow-2xs cursor-pointer">ÉSIKA</button>
                         <button onclick="filterByBrand('L\'BEL')" class="px-2.5 py-1 text-[11px] font-bold bg-white/80 hover:bg-orange-600 text-amber-950 hover:text-white rounded-lg transition-colors border border-orange-200/80 shadow-2xs cursor-pointer">L'BEL</button>
-                        <button onclick="filterByBrand('Aliados')" class="px-2.5 py-1 text-[11px] font-bold bg-white/80 hover:bg-orange-600 text-amber-950 hover:text-white rounded-lg transition-colors border border-orange-200/80 shadow-2xs cursor-pointer">ALIADOS</button>
+                        <button onclick="filterByBrand('ALIADOS')" class="px-2.5 py-1 text-[11px] font-bold bg-white/80 hover:bg-orange-600 text-amber-950 hover:text-white rounded-lg transition-colors border border-orange-200/80 shadow-2xs cursor-pointer">ALIADOS</button>
                     </div>
                 </div>
 
@@ -721,7 +765,15 @@
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 text-amber-100 py-3.5 px-4 text-center border-t border-amber-900/50 relative overflow-hidden mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 shadow-inner">
+        <!-- PROMINENT SHARE APP BUTTON -->
+        <div class="py-5 text-center bg-orange-50/50 border-t border-orange-100">
+            <button onclick="shareKiosco()" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 inline-flex items-center gap-2 text-xs cursor-pointer border border-amber-300/40">
+                <i class="fa-solid fa-share-nodes text-yellow-100 text-sm"></i>
+                <span>Compartir App</span>
+            </button>
+        </div>
+
+        <div class="bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 text-amber-100 py-3.5 px-4 text-center border-t border-amber-900/50 relative overflow-hidden flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 shadow-inner">
             <div class="text-center sm:text-left">
                 <p class="text-[11px] font-bold text-amber-300 tracking-wide">Sol Digital Solutions <span class="text-stone-400 font-normal">by</span> <span class="font-serif italic text-white font-bold">EPamar</span></p>
                 <p class="text-[10px] text-stone-400 mt-0.5 font-medium">© 2004 - 2026 · Todos los derechos reservados</p>
@@ -734,38 +786,11 @@
     </footer>
 
     <script>
-        const INITIAL_SEED_PRODUCTS_TIMESTAMP = "2026-09-22T19:00:00.000Z";
+        const INITIAL_SEED_PRODUCTS_TIMESTAMP = "2026-09-27T00:00:00.000Z";
+        const INITIAL_SEED_PRODUCTS = [];
 
-        const INITIAL_SEED_PRODUCTS = [
-            { id: "1", ref: "SOL-101", name: "Avon Care Crema Facial Hidratante 3en1", brand: "AVON", price: 12000, stock: 2, description: "Humecta y regenera, 100g", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-care-crema-3en1-rosamosqueta-y-camelia.jpg.png", preset: "pink-maternal", active: true },
-            { id: "2", ref: "SOL-102", name: "Avon Care Neutro Desodorante Roll On", brand: "AVON", price: 12000, stock: 2, description: "48h Protección sin perfume, 48ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-care-desodorante3en1-neutro.jpg.png", preset: "pink-maternal", active: true },
-            { id: "3", ref: "SOL-103", name: "Avon On Duty Care Aclarador Roll-on", brand: "AVON", price: 12000, stock: 2, description: "Aclarador de axilas, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-onduty-care-aclarador.jpg.png", preset: "pink-maternal", active: true },
-            { id: "4", ref: "SOL-104", name: "Avon On Duty Women Powder Roll-on", brand: "AVON", price: 12000, stock: 2, description: "Protección suave talco, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-onduty-care-powder-48h.jpg.png", preset: "pink-maternal", active: true },
-            { id: "5", ref: "SOL-105", name: "Avon Care Footworks Control de Callos 3en1", brand: "AVON", price: 20000, stock: 2, description: "Crema para pies con ácido láctico, 100g", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-footworks-crema-control-callos.jpg.png", preset: "soft-lavender", active: true },
-            { id: "6", ref: "SOL-106", name: "Avon Care Intimate Gel Limpieza Femenina", brand: "AVON", price: 20000, stock: 2, description: "Gel de higiene con extracto de avena ginecológicamente testado, 250ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-care-intimate-gel-limpieza-hidratante.jpg.png", preset: "soft-lavender", active: true },
-            { id: "7", ref: "SOL-107", name: "Avon Senses Oriental Garden Spray", brand: "AVON", price: 20000, stock: 2, description: "Colonia spray corporal Violeta y Lichi, 200ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/avon/avon-senses-colonia-violeta-lichi.jpg.png", preset: "pink-maternal", active: true },
-            { id: "8", ref: "SOL-201", name: "Cyzone Desodorante All Black Roll-on", brand: "CYZONE", price: 10000, stock: 2, description: "Desodorante antitranspirante masculino", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/cyzone/cyzone-all-black-desodorante-rollon.jpg.png", preset: "pink-maternal", active: true },
-            { id: "9", ref: "SOL-202", name: "Cyzone Nitro Air Roll-on", brand: "CYZONE", price: 10000, stock: 2, description: "Protección cítrica y masculina, Nitro", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/cyzone/cyzone-nitro-air-desodorante-rollon.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "10", ref: "SOL-203", name: "Cyzone Sweet Black Iconic Perfume", brand: "CYZONE", price: 40000, stock: 2, description: "Eau de Parfum aroma oriental dulce vainilla y caramelo, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/cyzone/cyzone-sweet-black-iconic-perfume.jpg.png", preset: "pink-maternal", active: true },
-            { id: "11", ref: "SOL-204", name: "Cyzone Pink Crush Perfume", brand: "CYZONE", price: 50000, stock: 2, description: "Notas de frutos rojos, sándalo y almizcle, 75ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/cyzone/cyzone-pink-crush-perfume.jpg.png", preset: "pink-maternal", active: true },
-            { id: "12", ref: "SOL-301", name: "Yanbal L'Essence Violeta Salvaje", brand: "YANBAL", price: 35000, stock: 2, description: "Colonia refrescante herbal, 200ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/yanbal/yanbal-lessence-colonia-violeta-salvaje.jpg.png", preset: "soft-lavender", active: true },
-            { id: "13", ref: "SOL-302", name: "Yanbal Gaia Parfum", brand: "YANBAL", price: 120000, stock: 2, description: "Un bouquet floral encantador de jacarandá, magnolias y orquídeas, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/yanbal/yanbal-gaia-perfume-mujer.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "14", ref: "SOL-303", name: "Yanbal Cielo Eau de Parfum", brand: "YANBAL", price: 120000, stock: 2, description: "Aura delicada de jazmín, flor de loto y un fondo suave de almizcle, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/yanbal/yanbal-cielo-perfume-mujer.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "15", ref: "SOL-304", name: "Yanbal Ohm Parfum", brand: "YANBAL", price: 150000, stock: 2, description: "Toronja rosada, salvia y un toque elegante de cuero, 100ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/yanbal/yanbal-ohm-clasico-perfume-hombre.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "16", ref: "SOL-305", name: "Yanbal Total Block SPF 100", brand: "YANBAL", price: 60000, stock: 2, description: "Protector solar matificante con control de brillo, 80g", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/yanbal/yanbal-total-block-100-protector-matificante.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "17", ref: "SOL-401", name: "Ésika Agú Colonia Aroma Vibrante", brand: "ÉSIKA", price: 60000, stock: 2, description: "Fragancia para bebés con manzanilla libre de parabenos, 1 Litro", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/esika/esika-agu-colonia-manzanilla-1l.jpg.png", preset: "soft-lavender", active: true },
-            { id: "18", ref: "SOL-402", name: "Ésika Expression Parfum", brand: "ÉSIKA", price: 50000, stock: 2, description: "Aroma floral de jazmín de Egipto y vainilla, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/esika/esika-expression-perfume.jpg.png", preset: "pink-maternal", active: true },
-            { id: "19", ref: "SOL-501", name: "Natura Tododia Crema de Manos Nuez Pecán", brand: "NATURA", price: 15000, stock: 2, description: "Nutrición con prebióticos y manteca de cacao, 50ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/natura/natura-tododia-crema-manos-cuello-nuez-pecan.jpg.png", preset: "pink-maternal", active: true },
-            { id: "20", ref: "SOL-502", name: "Natura Erva Doce Roll-on", brand: "NATURA", price: 25000, stock: 2, description: "Fórmula 72h de protección invisible, fresca y natural, 70ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/natura/natura-ervadoce-desodorante-rollon.jpg.png", preset: "soft-lavender", active: true },
-            { id: "21", ref: "SOL-503", name: "Natura Ekos Pulpa Castanha Manos", brand: "NATURA", price: 30000, stock: 2, description: "Realimenta y regenera tu piel con omega 6 y 9, 75g", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/natura/natura-ekos-pulpa-manos-castana.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "22", ref: "SOL-504", name: "Natura Meu Primeiro Humor Body Splash", brand: "NATURA", price: 45000, stock: 2, description: "Notas cítricas y frozen de pera vibrante, 200ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/natura/natura-humor-meu-primeiro-body-splash.jpg.png", preset: "pink-maternal", active: true },
-            { id: "23", ref: "SOL-601", name: "L'Bel Bleu Intense Parfum", brand: "L'BEL", price: 60000, stock: 2, description: "Perfume masculino con alta concentración fresca de hierbas, 100ml", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/lbel/lbel-bleu-intense-perfume-hombre.jpg.png", preset: "marmor-marfil", active: true },
-            { id: "24", ref: "SOL-701", name: "Carmel Colonia Refrescante Blue", brand: "Aliados", price: 6000, stock: 2, description: "Especial para barbería y frescura diaria", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/aliados/aliados-carmel-gel-barbero-afeitar.jpg.png", preset: "soft-lavender", active: true },
-            { id: "25", ref: "SOL-702", name: "Loguin Brillo de Labios Cereza", brand: "Aliados", price: 10000, stock: 2, description: "Sabor y color con textura líquida e hidratante", image: "https://raw.githubusercontent.com/epamar88/sol-catalogo/main/vitrina/aliados/aliados-loguin-brillo-labial-super-gloss.jpg.png", preset: "pink-maternal", active: true }
-        ];
-
-        const BRANDS = ["AVON", "YANBAL", "NATURA", "CYZONE", "ÉSIKA", "L'BEL", "Aliados"];
-        const BRAND_SERIES = { "AVON": 100, "CYZONE": 200, "YANBAL": 300, "ÉSIKA": 400, "NATURA": 500, "L'BEL": 600, "Aliados": 700 };
+        const BRANDS = ["AVON", "YANBAL", "NATURA", "CYZONE", "ÉSIKA", "L'BEL", "ALIADOS"];
+        const BRAND_SERIES = { "AVON": 100, "CYZONE": 200, "YANBAL": 300, "ÉSIKA": 400, "NATURA": 500, "L'BEL": 600, "ALIADOS": 700 };
 
         const BACKGROUND_PRESETS = [
             { id: "marmor-marfil", name: "Mármol Marfil", class: "bg-preset-marmor-marfil" },
@@ -782,6 +807,7 @@
         let base64UploadedImage = "";
         let adminPassword = localStorage.getItem("sol_admin_pass") || "Sol2004";
         let deferredPrompt = null;
+        let currentZoomContext = { type: null, itemId: null };
 
         function fixGitHubRawUrl(url) {
             if (!url) return "";
@@ -796,16 +822,25 @@
             const storedTimestamp = localStorage.getItem("sol_catalog_timestamp");
 
             if (!storedProducts || !storedTimestamp || new Date(INITIAL_SEED_PRODUCTS_TIMESTAMP) > new Date(storedTimestamp)) {
-                products = INITIAL_SEED_PRODUCTS.map(p => ({ ...p, stock: p.stock !== undefined ? p.stock : 2, image: fixGitHubRawUrl(p.image) }));
+                products = INITIAL_SEED_PRODUCTS.map(p => {
+                    let cleanDesc = p.description || "";
+                    if (cleanDesc.toLowerCase().includes("disponible por cat")) cleanDesc = "";
+                    return { ...p, description: cleanDesc, stock: p.stock !== undefined ? p.stock : 1, image: fixGitHubRawUrl(p.image) };
+                });
                 localStorage.setItem("sol_catalog_products", JSON.stringify(products));
                 localStorage.setItem("sol_catalog_timestamp", INITIAL_SEED_PRODUCTS_TIMESTAMP);
             } else {
                 try {
-                    products = JSON.parse(storedProducts).map(p => ({ ...p, stock: p.stock !== undefined ? p.stock : 2, image: fixGitHubRawUrl(p.image) }));
+                    products = JSON.parse(storedProducts).map(p => {
+                        let cleanDesc = p.description || "";
+                        if (cleanDesc.toLowerCase().includes("disponible por cat")) cleanDesc = "";
+                        return { ...p, description: cleanDesc, stock: p.stock !== undefined ? p.stock : 1, image: fixGitHubRawUrl(p.image) };
+                    });
                 } catch(e) {
-                    products = INITIAL_SEED_PRODUCTS.map(p => ({ ...p, stock: 2, image: fixGitHubRawUrl(p.image) }));
+                    products = INITIAL_SEED_PRODUCTS.map(p => ({ ...p, stock: 1, image: fixGitHubRawUrl(p.image) }));
                 }
             }
+            saveToLocalStorage();
 
             const storedCart = localStorage.getItem("sol_catalog_cart");
             if (storedCart) {
@@ -830,6 +865,10 @@
             updateCartUI();
             suggestNextReference();
             detectOSAndGuide();
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            }
         }
 
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -927,8 +966,8 @@
             if (!files.length) return;
 
             const defaultBrand = document.getElementById("batch-brand").value;
-            const defaultPrice = parseInt(document.getElementById("batch-default-price").value) || 15000;
-            const defaultStock = parseInt(document.getElementById("batch-default-stock").value) || 2;
+            const defaultPrice = parseInt(document.getElementById("batch-default-price").value) || 0;
+            const defaultStock = parseInt(document.getElementById("batch-default-stock").value) || 1;
 
             let processedCount = 0;
             showToast(`Procesando ${files.length} imágenes...`, "info");
@@ -957,7 +996,7 @@
                         
                         const cleanFileName = file.name.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
                         const suggestedRef = calculateNextRefForBrand(defaultBrand, idx);
-                        const autoName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+                        const autoName = `${defaultBrand} ${suggestedRef}`;
 
                         batchItems.push({
                             id: Date.now().toString() + "-" + idx,
@@ -1005,6 +1044,19 @@
             return `SOL-${maxNum + 1 + offset}`;
         }
 
+        function openZoomForBatch(itemId) {
+            const item = batchItems.find(b => b.id === itemId);
+            if (!item) return;
+            openImageZoom(item.imageData, item.name, item.brand, item.ref, `$${item.price.toLocaleString('es-CO')}`, '', 'batch', item.id);
+        }
+
+        function openZoomForProduct(productId, context = 'public') {
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+            const imgSource = fixGitHubRawUrl(prod.image) || getPlaceholderSVG(prod.brand);
+            openImageZoom(imgSource, prod.name, prod.brand, prod.ref || 'S-N', `$${prod.price.toLocaleString('es-CO')}`, prod.description || '', context, prod.id);
+        }
+
         function renderBatchList() {
             const container = document.getElementById("batch-preview-container");
             const list = document.getElementById("batch-items-list");
@@ -1027,9 +1079,15 @@
 
                 div.innerHTML = `
                     <div class="flex items-center gap-3 w-full md:w-auto">
-                        <img src="${item.imageData}" class="w-12 h-12 object-contain rounded-lg border bg-stone-50 p-0.5">
-                        <div class="space-y-1">
-                            <input type="text" value="${item.name}" onchange="updateBatchItemField('${item.id}', 'name', this.value)" class="font-extrabold text-amber-950 px-2 py-1 border rounded-lg w-full md:w-52 text-xs focus:ring-1 focus:ring-orange-500">
+                        <div onclick="openZoomForBatch('${item.id}')" class="relative group cursor-zoom-in shrink-0">
+                            <img src="${item.imageData}" class="w-12 h-12 object-contain rounded-lg border bg-stone-50 p-0.5 shadow-2xs product-img-clean">
+                            <div class="absolute inset-0 bg-stone-900/40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-1 flex-grow">
+                            <label class="text-[10px] font-bold text-stone-500 block">Nombre Visible del Producto:</label>
+                            <input type="text" value="${item.name.replace(/"/g, '&quot;')}" onchange="updateBatchItemField('${item.id}', 'name', this.value)" class="font-extrabold text-amber-950 px-2 py-1 border rounded-lg w-full md:w-64 text-xs focus:ring-1 focus:ring-orange-500 bg-stone-50/50">
                             <div class="flex items-center gap-2">
                                 <span class="bg-amber-100 text-amber-900 font-bold px-1.5 py-0.5 text-[9px] rounded">Ref: ${item.ref}</span>
                                 <span class="text-[9px] font-mono text-stone-400 truncate max-w-[150px]">${item.suggestedFileName}</span>
@@ -1039,14 +1097,14 @@
 
                     <div class="flex items-center gap-2 w-full md:w-auto justify-end">
                         <div>
-                            <span class="text-[9px] font-bold text-stone-400 block">Precio:</span>
+                            <span class="text-[9px] font-bold text-stone-400 block">Precio ($):</span>
                             <input type="number" value="${item.price}" onchange="updateBatchItemField('${item.id}', 'price', this.value)" class="w-20 px-2 py-1 text-xs border rounded-lg font-bold">
                         </div>
                         <div>
                             <span class="text-[9px] font-bold text-stone-400 block">Stock:</span>
                             <input type="number" value="${item.stock}" onchange="updateBatchItemField('${item.id}', 'stock', this.value)" class="w-14 px-2 py-1 text-xs border rounded-lg font-bold text-center">
                         </div>
-                        <button onclick="removeBatchItem('${item.id}')" class="w-7 h-7 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg flex items-center justify-center cursor-pointer mt-3">
+                        <button onclick="removeBatchItem('${item.id}')" class="w-7 h-7 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg flex items-center justify-center cursor-pointer mt-3 transition-colors">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
@@ -1082,18 +1140,19 @@
             batchItems.forEach((b, idx) => {
                 b.brand = brand;
                 b.ref = calculateNextRefForBrand(brand, idx);
+                b.name = `${brand} ${b.ref}`;
             });
             renderBatchList();
         }
 
         function updateBatchPriceForAll() {
-            const price = parseInt(document.getElementById("batch-default-price").value) || 15000;
+            const price = parseInt(document.getElementById("batch-default-price").value) || 0;
             batchItems.forEach(b => b.price = price);
             renderBatchList();
         }
 
         function updateBatchStockForAll() {
-            const stock = parseInt(document.getElementById("batch-default-stock").value) || 2;
+            const stock = parseInt(document.getElementById("batch-default-stock").value) || 1;
             batchItems.forEach(b => b.stock = stock);
             renderBatchList();
         }
@@ -1109,7 +1168,7 @@
                     brand: item.brand,
                     price: item.price,
                     stock: item.stock,
-                    description: "Disponible por catálogo.",
+                    description: "",
                     image: item.imageData,
                     preset: item.preset,
                     active: true
@@ -1275,17 +1334,17 @@
                 const presetObj = BACKGROUND_PRESETS.find(b => b.id === p.preset) || BACKGROUND_PRESETS[0];
                 const formatPrice = p.price.toLocaleString('es-CO');
                 const imgSource = fixGitHubRawUrl(p.image) || getPlaceholderSVG(p.brand);
-                const stockCount = p.stock !== undefined ? p.stock : 2;
+                const stockCount = p.stock !== undefined ? p.stock : 1;
+
+                let cleanDesc = p.description ? p.description.trim() : "";
+                if (cleanDesc.toLowerCase().includes("disponible por cat")) cleanDesc = "";
+                const hasCustomDesc = cleanDesc !== "";
 
                 const card = document.createElement("div");
                 card.className = "bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-md border border-orange-100/90 transition-all duration-300 flex flex-col group h-full";
 
-                const safeName = (p.name || '').replace(/'/g, "\\'");
-                const safeDesc = (p.description || '').replace(/'/g, "\\'");
-                const safeImage = (imgSource || '').replace(/'/g, "\\'");
-
                 card.innerHTML = `
-                    <div onclick="openImageZoom('${safeImage}', '${safeName}', '${p.brand}', '${p.ref || 'S-N'}', '$${formatPrice}', '${safeDesc}')" class="aspect-square w-full relative flex items-center justify-center p-3 overflow-hidden cursor-zoom-in ${presetObj.class}">
+                    <div onclick="openZoomForProduct('${p.id}', 'public')" class="aspect-square w-full relative flex items-center justify-center p-3 overflow-hidden cursor-zoom-in ${presetObj.class}">
                         <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
                             <span class="bg-white/95 text-amber-950 border border-orange-200/60 text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
                                 ${p.brand}
@@ -1298,7 +1357,7 @@
                             </span>
                         </div>
 
-                        <img src="${imgSource}" alt="${p.name}" class="max-h-full max-w-full object-contain drop-shadow-md transform group-hover:scale-105 transition-transform duration-300" onerror="this.src='${getPlaceholderSVG(p.brand)}'">
+                        <img src="${imgSource}" alt="${p.name.replace(/"/g, '&quot;')}" class="max-h-full max-w-full object-contain rounded-xl transform group-hover:scale-105 transition-transform duration-300 product-img-clean" onerror="this.src='${getPlaceholderSVG(p.brand)}'">
                         
                         <div class="absolute bottom-2 right-2 bg-stone-900/70 text-white w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-xs">
                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
@@ -1310,9 +1369,7 @@
                             <h4 class="font-extrabold text-amber-950 text-xs md:text-sm line-clamp-2 min-h-[2.4rem] leading-snug group-hover:text-orange-600 transition-colors">
                                 ${p.name}
                             </h4>
-                            <p class="text-[11px] text-stone-500 mt-1 line-clamp-1 leading-tight">
-                                ${p.description || 'Disponible por catálogo.'}
-                            </p>
+                            ${hasCustomDesc ? `<p class="text-[11px] text-stone-500 mt-1 line-clamp-1 leading-tight">${cleanDesc}</p>` : ''}
                         </div>
                         
                         <div class="mt-2.5 pt-2.5 border-t border-stone-100 flex items-center justify-between">
@@ -1337,7 +1394,7 @@
             const ref = document.getElementById("prod-ref").value.trim().toUpperCase();
             const brand = document.getElementById("prod-brand").value;
             const price = parseInt(document.getElementById("prod-price").value) || 0;
-            const stock = parseInt(document.getElementById("prod-stock").value) || 2;
+            const stock = parseInt(document.getElementById("prod-stock").value) || 1;
             const desc = document.getElementById("prod-desc").value;
             const imgUrlInput = fixGitHubRawUrl(document.getElementById("prod-img-url").value);
 
@@ -1368,7 +1425,8 @@
             document.getElementById("add-product-form").reset();
             document.getElementById("upload-status").innerText = "Seleccionar foto desde PC o Celular";
             base64UploadedImage = "";
-            document.getElementById("prod-stock").value = "2";
+            document.getElementById("prod-stock").value = "1";
+            document.getElementById("prod-price").value = "0";
             
             updateCatalogView();
             updateAdminInventoryView();
@@ -1394,19 +1452,24 @@
 
             items.forEach(p => {
                 const div = document.createElement("div");
-                div.className = "p-3 bg-stone-50 rounded-xl border border-stone-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs";
+                div.className = "p-3 bg-stone-50 rounded-xl border border-stone-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs shadow-2xs";
                 const imgSource = fixGitHubRawUrl(p.image) || getPlaceholderSVG(p.brand);
-                const stockVal = p.stock !== undefined ? p.stock : 2;
+                const stockVal = p.stock !== undefined ? p.stock : 1;
 
                 div.innerHTML = `
                     <div class="flex items-center gap-3 w-full md:w-auto">
-                        <img src="${imgSource}" class="w-10 h-10 object-contain rounded-lg border bg-white p-0.5" onerror="this.src='${getPlaceholderSVG(p.brand)}'">
-                        <div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="font-extrabold text-amber-950">${p.name}</span>
-                                <span class="bg-amber-100 text-amber-950 font-bold px-1.5 py-0.2 text-[9px] rounded">Ref: ${p.ref}</span>
+                        <div onclick="openZoomForProduct('${p.id}', 'inventory')" class="relative group cursor-zoom-in shrink-0">
+                            <img src="${imgSource}" class="w-10 h-10 object-contain rounded-lg border bg-white p-0.5 shadow-2xs product-img-clean" onerror="this.src='${getPlaceholderSVG(p.brand)}'">
+                            <div class="absolute inset-0 bg-stone-900/40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-xs"></i>
                             </div>
-                            <span class="text-[10px] text-stone-500 font-bold">${p.brand}</span>
+                        </div>
+                        <div class="space-y-1 flex-grow">
+                            <div class="flex items-center gap-1.5">
+                                <input type="text" value="${p.name.replace(/"/g, '&quot;')}" onchange="updateProductName('${p.id}', this.value)" class="font-extrabold text-amber-950 px-2 py-0.5 border border-stone-200 rounded-lg text-xs focus:ring-1 focus:ring-orange-500 w-full md:w-56 bg-white">
+                                <span class="bg-amber-100 text-amber-950 font-bold px-1.5 py-0.5 text-[9px] rounded shrink-0">Ref: ${p.ref}</span>
+                            </div>
+                            <span class="text-[10px] text-stone-500 font-bold block">${p.brand}</span>
                         </div>
                     </div>
 
@@ -1436,6 +1499,16 @@
                 `;
                 list.appendChild(div);
             });
+        }
+
+        function updateProductName(id, newName) {
+            const prod = products.find(p => p.id === id);
+            if (prod && newName.trim()) {
+                prod.name = newName.trim();
+                saveToLocalStorage();
+                updateCatalogView();
+                showToast("Nombre actualizado", "success");
+            }
         }
 
         function updatePrice(id, newPrice) {
@@ -1513,7 +1586,7 @@
 
             const existing = cart.find(item => item.id === id);
             const currentQty = existing ? (parseInt(existing.qty) || 0) : 0;
-            const availableStock = prod.stock !== undefined ? prod.stock : 2;
+            const availableStock = prod.stock !== undefined ? prod.stock : 1;
 
             if (currentQty + 1 > availableStock) {
                 showToast(`Unidades en stock: ${availableStock}. ¡Escríbenos para encargar más!`, "warning");
@@ -1566,7 +1639,7 @@
                     div.className = "flex items-center justify-between p-3 bg-stone-50 rounded-xl border border-stone-200/60";
                     div.innerHTML = `
                         <div class="flex items-center gap-2.5">
-                            <img src="${fixGitHubRawUrl(prod.image) || getPlaceholderSVG(prod.brand)}" class="w-10 h-10 object-contain rounded-lg border bg-white p-0.5">
+                            <img src="${fixGitHubRawUrl(prod.image) || getPlaceholderSVG(prod.brand)}" class="w-10 h-10 object-contain rounded-lg border bg-white p-0.5 product-img-clean">
                             <div>
                                 <h5 class="font-bold text-xs text-amber-950 line-clamp-1">${prod.name}</h5>
                                 <span class="text-[10px] text-orange-600 font-extrabold">$${price.toLocaleString('es-CO')} c/u</span>
@@ -1634,6 +1707,18 @@
         }
 
         function downloadWebForPublishing() {
+            const adminModal = document.getElementById("admin-modal");
+            const passwordModal = document.getElementById("password-modal");
+            const zoomModal = document.getElementById("image-zoom-modal");
+            if (adminModal) adminModal.classList.add("hidden");
+            if (passwordModal) passwordModal.classList.add("hidden");
+            if (zoomModal) zoomModal.classList.add("hidden");
+
+            const cartDrawer = document.getElementById("cart-drawer");
+            const cartBackdrop = document.getElementById("cart-drawer-backdrop");
+            if (cartDrawer) cartDrawer.classList.add("translate-x-full");
+            if (cartBackdrop) cartBackdrop.classList.add("opacity-0", "pointer-events-none");
+
             const updatedTimestamp = new Date().toISOString();
             localStorage.setItem("sol_catalog_timestamp", updatedTimestamp);
 
@@ -1658,8 +1743,8 @@
         async function shareKiosco() {
             const cleanUrl = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
             const shareData = {
-                title: 'Sol - Venta por Catálogo',
-                text: '☀️ ¡Mira los cosméticos, perfumería y productos de belleza disponibles aquí:',
+                title: 'Sol - Venta por Catálogo | Kiosko Digital',
+                text: '☀️ ¡Mira los cosméticos, perfumería y productos de belleza disponibles aquí en nuestro Kiosko Digital:',
                 url: cleanUrl
             };
 
@@ -1711,6 +1796,87 @@
             });
         }
 
+        function openImageZoom(imgUrl, title, brand, ref, price, desc = '', contextType = 'public', itemId = null) {
+            document.getElementById("zoom-modal-img").src = imgUrl;
+            document.getElementById("zoom-product-title").innerText = title;
+            document.getElementById("zoom-brand-badge").innerText = brand;
+            document.getElementById("zoom-ref-badge").innerText = `Ref: ${ref}`;
+            document.getElementById("zoom-product-price").innerText = price;
+            
+            let cleanDesc = (desc && desc.trim() !== "") ? desc.trim() : "";
+            if (cleanDesc.toLowerCase().includes("disponible por cat")) cleanDesc = "";
+
+            const descEl = document.getElementById("zoom-product-desc");
+            if (descEl) {
+                descEl.innerText = cleanDesc;
+                if (!cleanDesc) {
+                    descEl.classList.add("hidden");
+                } else {
+                    descEl.classList.remove("hidden");
+                }
+            }
+
+            currentZoomContext = { type: contextType, itemId: itemId };
+
+            const publicFooter = document.getElementById("zoom-public-footer");
+            const adminFooter = document.getElementById("zoom-admin-footer");
+
+            if ((contextType === 'batch' || contextType === 'inventory') && itemId) {
+                let item = null;
+                if (contextType === 'batch') item = batchItems.find(b => b.id === itemId);
+                if (contextType === 'inventory') item = products.find(p => p.id === itemId);
+                
+                if (item) {
+                    document.getElementById("zoom-edit-name").value = item.name || '';
+                    document.getElementById("zoom-edit-price").value = item.price || 0;
+                    document.getElementById("zoom-edit-stock").value = item.stock || 1;
+                }
+                if (publicFooter) publicFooter.classList.add("hidden");
+                if (adminFooter) adminFooter.classList.remove("hidden");
+            } else {
+                if (publicFooter) publicFooter.classList.remove("hidden");
+                if (adminFooter) adminFooter.classList.add("hidden");
+            }
+
+            const modal = document.getElementById("image-zoom-modal");
+            if (modal) modal.classList.remove("hidden");
+        }
+
+        function handleZoomFieldChange(field, val) {
+            const { type, itemId } = currentZoomContext;
+            if (!itemId) return;
+
+            if (type === 'batch') {
+                const item = batchItems.find(b => b.id === itemId);
+                if (item) {
+                    if (field === 'price' || field === 'stock') {
+                        item[field] = parseInt(val) || 0;
+                    } else {
+                        item[field] = val;
+                    }
+                    renderBatchList();
+                }
+            } else if (type === 'inventory') {
+                const prod = products.find(p => p.id === itemId);
+                if (prod) {
+                    if (field === 'price' || field === 'stock') {
+                        prod[field] = parseInt(val) || 0;
+                    } else if (field === 'name') {
+                        prod.name = val;
+                    }
+                    saveToLocalStorage();
+                    updateAdminInventoryView();
+                    updateCatalogView();
+                }
+            }
+        }
+
+        function closeImageZoom() {
+            const modal = document.getElementById("image-zoom-modal");
+            if (modal) modal.classList.add("hidden");
+            currentZoomContext = { type: null, itemId: null };
+        }
+
         function toggleAdminModal() {
             const modal = document.getElementById("admin-modal");
             if (modal) modal.classList.toggle("hidden");
@@ -1753,23 +1919,6 @@
                 el.classList.toggle("hidden");
                 if (icon) icon.classList.toggle("rotate-180");
             }
-        }
-
-        function openImageZoom(imgUrl, title, brand, ref, price, desc = '') {
-            document.getElementById("zoom-modal-img").src = imgUrl;
-            document.getElementById("zoom-product-title").innerText = title;
-            document.getElementById("zoom-brand-badge").innerText = brand;
-            document.getElementById("zoom-ref-badge").innerText = `Ref: ${ref}`;
-            document.getElementById("zoom-product-price").innerText = price;
-            document.getElementById("zoom-product-desc").innerText = desc || 'Disponible por catálogo.';
-
-            const modal = document.getElementById("image-zoom-modal");
-            if (modal) modal.classList.remove("hidden");
-        }
-
-        function closeImageZoom() {
-            const modal = document.getElementById("image-zoom-modal");
-            if (modal) modal.classList.add("hidden");
         }
 
         function openConfirmModal(title, msg, onOk) {
