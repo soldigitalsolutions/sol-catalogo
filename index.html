@@ -162,7 +162,7 @@
                 </div>
                 <div>
                     <h4 class="font-extrabold text-amber-950 text-xs">3. Envía por WhatsApp</h4>
-                    <p class="text-[11px] text-stone-600 font-medium">Te confirmamos pedido y coordinamos entrega.</p>
+                    <p class="text-[11px] text-stone-600 font-medium">Elige a tu asesor y coordina tu entrega.</p>
                 </div>
             </div>
         </section>
@@ -378,7 +378,7 @@
                         <i id="faq-2-icon" class="fa-solid fa-chevron-down text-xs text-stone-400 transition-transform"></i>
                     </button>
                     <div id="content-faq-2" class="hidden px-3 pb-3 text-[11px] text-stone-700 leading-relaxed border-t border-orange-100 pt-2 bg-white">
-                        Explora la vitrina, haz clic en "Agregar" en los productos que desees y luego presiona el botón superior "Pedido" para revisar tu lista y enviarla directamente a nuestro WhatsApp con un solo toque.
+                        Explora la vitrina, haz clic en "Agregar" en los productos que desees y luego presiona el botón superior "Pedido" para revisar tu lista y enviarla directamente a tu asesor de confianza con un solo toque.
                     </div>
                 </div>
 
@@ -551,9 +551,9 @@
                             <i class="fa-solid fa-clipboard-list text-orange-500"></i> Visualizador y Despacho de Pedidos
                         </h4>
                         <p class="text-stone-500 text-[11px]">
-                            Pega aquí el texto del mensaje recibido por WhatsApp para analizar los productos ordenados con sus fotografías:
+                            Pega aquí el texto del mensaje recibido para analizar los productos ordenados con sus fotografías:
                         </p>
-                        <textarea id="dispatch-text-input" rows="3" placeholder="Pega el mensaje de WhatsApp aquí..." class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-orange-500 focus:outline-none"></textarea>
+                        <textarea id="dispatch-text-input" rows="3" placeholder="Pega el mensaje de pedido aquí..." class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-orange-500 focus:outline-none"></textarea>
                         
                         <div class="flex justify-end gap-2">
                             <button onclick="loadCartIntoDispatch()" class="px-3 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-xs cursor-pointer">Usar Carrito Actual</button>
@@ -884,7 +884,7 @@
                 }
             });
             message += `\n*Total Estimado:* $${total.toLocaleString('es-CO')}\n\nQuedo atento(a) para coordinar el pago y envío. ¡Gracias!`;
-            window.open(`https://wa.me/573005919059?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function openProductViewer(productId) {
