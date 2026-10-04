@@ -204,10 +204,11 @@
             </div>
         </section>
 
-        <!-- Grilla de Productos -->
+        <!-- Grilla de Productos con nombres centrados y elegantes -->
         <section id="catalog-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 min-h-[250px]"></section>
     </main>
 
+    <!-- FOOTER ORIGINAL RESTAURADO -->
     <footer>
         <div class="bg-gradient-to-b from-[#fffaf5] via-[#ffedd5] to-[#fed7aa] text-stone-800 pt-10 pb-8 px-4 border-t border-orange-200/60">
             <div class="max-w-4xl mx-auto text-center space-y-6">
@@ -335,7 +336,7 @@
             <div class="flex items-center justify-between border-b border-orange-200/80 pb-3">
                 <div class="flex items-center space-x-2.5">
                     <div class="w-10 h-10 bg-gradient-to-tr from-amber-400 to-orange-500 text-white rounded-xl flex items-center justify-center text-base shadow-xs">
-                        <span class="text-yellow-100 text-lg">☀️️</span>
+                        <span class="text-yellow-100 text-lg">☀</span>
                     </div>
                     <div>
                         <h4 class="font-extrabold text-amber-950 text-sm uppercase">Centro de Ayuda Sol</h4>
@@ -455,15 +456,11 @@
                             <h3 class="font-extrabold text-sm uppercase tracking-wider text-amber-300">Gestión del Kiosco Sol</h3>
                             <span id="admin-header-total-badge" class="bg-orange-500/30 text-orange-300 border border-orange-500/40 text-[10px] font-black px-2 py-0.5 rounded-full">0 Productos</span>
                         </div>
-                        <p class="text-[10px] text-stone-300">Panel de control de productos, inventario y despachos</p>
+                        <p class="text-[10px] text-stone-300">Panel de control de productos, borrador e inventario</p>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-                    <button onclick="purgeLocalCacheDuplicates()" class="py-2 px-3 bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white font-extrabold rounded-xl text-xs transition-colors cursor-pointer flex items-center gap-1.5 shrink-0 border border-stone-700" title="Elimina productos duplicados o rotos sin URL">
-                        <i class="fa-solid fa-broom text-amber-400"></i> Depurar Caché
-                    </button>
-
                     <button onclick="downloadWebFile()" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold rounded-xl text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer shrink-0 active:scale-95">
                         <i class="fa-solid fa-file-code text-sm"></i>
                         <span>💾 Publicar / Descargar index.html</span>
@@ -495,19 +492,19 @@
                     <div class="bg-white border border-stone-200 p-4 sm:p-5 rounded-2xl space-y-3 shadow-xs">
                         <div class="flex items-center justify-between border-b border-stone-100 pb-2">
                             <h4 class="font-black text-orange-600 flex items-center gap-2 text-xs uppercase tracking-wider">
-                                <i class="fa-solid fa-list-ul text-sm"></i> Pegar Listado de Enlaces (Postimages u otros)
+                                <i class="fa-solid fa-list-ul text-sm"></i> Pegar Listado de Enlaces (Directos o Sitios Web)
                             </h4>
-                            <span class="text-[10px] bg-orange-100 text-orange-800 font-bold px-2.5 py-0.5 rounded-full">Detección Inteligente de Marca</span>
+                            <span class="text-[10px] bg-orange-100 text-orange-800 font-bold px-2.5 py-0.5 rounded-full">Extracción Inteligente</span>
                         </div>
                         <p class="text-stone-500 text-[11px]">
-                            Pega abajo la lista de enlaces de imágenes (una por línea). El sistema asignará automáticamente la marca detectada y dejará los productos listos para que fijes sus precios en la pestaña de inventario:
+                            Pega abajo tu lista de enlaces (tanto <strong>Enlace directo</strong> como <strong>Enlace directo para sitios web</strong> de Postimages). El sistema extraerá automáticamente las URLs y marcas:
                         </p>
                         
-                        <textarea id="bulk-urls-textarea" rows="7" placeholder="https://i.postimg.cc/MpL73XpL/aliados-arrurru-colonia-original-bebe-jpg.png&#10;https://i.postimg.cc/zGQC23GP/aliados-carmel-gel-barber-afeitar-jpg.png" class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none font-mono text-[11px]"></textarea>
+                        <textarea id="bulk-urls-textarea" rows="7" placeholder="https://i.postimg.cc/MpL73XpL/aliados-arrurru-colonia-original-bebe-jpg.png&#10;<a href=...><img src=...>" class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none font-mono text-[11px]"></textarea>
 
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
                             <div class="w-full sm:w-auto flex items-center gap-2">
-                                <label class="font-bold text-stone-600">Marca por defecto (si no la detecta):</label>
+                                <label class="font-bold text-stone-600">Marca por defecto:</label>
                                 <select id="bulk-default-brand" class="px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl font-bold text-stone-700 focus:ring-2 focus:ring-orange-500 focus:outline-none cursor-pointer">
                                     <option value="ALIADOS">ALIADOS</option>
                                     <option value="AVON">AVON</option>
@@ -520,7 +517,7 @@
                             </div>
                             
                             <button onclick="processSmartBulkUpload()" class="w-full sm:w-auto px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-extrabold rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-xs active:scale-95">
-                                <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Procesar e Importar Lote
+                                <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Agregar Lote al Borrador
                             </button>
                         </div>
                     </div>
@@ -550,13 +547,16 @@
                         </div>
 
                         <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-end">
-                            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-2xs">
-                                <i class="fa-solid fa-circle-check text-emerald-500 animate-pulse"></i> Auto-guardado Activo
+                            <span id="admin-save-status-badge" class="text-[11px] font-bold text-stone-600 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-2xs">
+                                <i class="fa-solid fa-circle-check text-emerald-500"></i> Sin cambios pendientes
                             </span>
-                            <span id="admin-products-count" class="text-stone-500 font-bold text-xs bg-stone-100 px-3 py-1 rounded-full border border-stone-200">0 Productos</span>
-                            <button onclick="downloadWebFile()" class="px-3.5 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold rounded-xl text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-95">
-                                <i class="fa-solid fa-file-code text-xs"></i> 💾 Publicar index.html
+                            <button id="admin-save-btn" onclick="saveAdminDraft()" class="hidden px-3.5 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold rounded-xl text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 animate-pulse">
+                                <i class="fa-solid fa-floppy-disk"></i> 💾 Guardar Cambios
                             </button>
+                            <button id="admin-discard-btn" onclick="discardAdminDraft()" class="hidden px-3 py-1.5 bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold rounded-xl text-xs transition-all flex items-center gap-1 cursor-pointer">
+                                <i class="fa-solid fa-rotate-left"></i> Descartar
+                            </button>
+                            <span id="admin-products-count" class="text-stone-500 font-bold text-xs bg-stone-100 px-3 py-1 rounded-full border border-stone-200">0 Productos</span>
                         </div>
                     </div>
 
@@ -638,29 +638,21 @@
         ];
 
         let catalogProducts = JSON.parse(localStorage.getItem('sol_catalog_products')) || initialProducts;
+        let adminDraftProducts = null;
+        let hasUnsavedChanges = false;
         let userCart = JSON.parse(localStorage.getItem('sol_catalog_cart')) || [];
         let selectedBrandFilter = 'TODAS';
 
         const availableBrands = ['TODAS', 'AVON', 'YANBAL', 'NATURA', 'CYZONE', 'ÉSIKA', "L'BEL", 'ALIADOS'];
 
-        /**
-         * Converts raw file strings/ALL CAPS into clean Title Case
-         * e.g., "SHAMPOO SIN SAL NUTRICION ABSOLUTA JPG" -> "Shampoo Sin Sal Nutrición Absoluta"
-         */
         function formatProductName(rawName) {
             if (!rawName) return 'Producto Sol';
-            
             let str = String(rawName).trim();
-            
-            // Remove raw file extensions or artifacts
             str = str.replace(/\.(png|jpg|jpeg|webp)$/i, '');
             str = str.replace(/\b(jpg|jpeg|png|webp|photoroom)\b/gi, '');
             str = str.replace(/[-_]+/g, ' ');
-
-            // Remove leading brand name if repeated at start
             str = str.replace(/^(aliados|avon|yanbal|natura|cyzone|esika|ésika|lbel|l'bel)\s+/i, '');
 
-            // Common cosmetic accent and formatting replacements
             const replacements = [
                 { reg: /\b2 en 1\b/gi, fix: '2 en 1' },
                 { reg: /\b3 en 1\b/gi, fix: '3 en 1' },
@@ -680,15 +672,9 @@
                 { reg: /\bserum\b/gi, fix: 'sérum' }
             ];
 
-            // Convert to Title Case
             str = str.toLowerCase().replace(/(?:^|\s|-)\S/g, function(a) { return a.toUpperCase(); });
+            replacements.forEach(rep => { str = str.replace(rep.reg, rep.fix); });
 
-            // Apply special replacements
-            replacements.forEach(rep => {
-                str = str.replace(rep.reg, rep.fix);
-            });
-
-            // Ensure words like 'de', 'para', 'con', 'y', 'en', 'a' stay lowercase unless first word
             const minorWords = ['De', 'Para', 'Con', 'Y', 'En', 'A', 'Por', 'Del', 'La', 'El', 'Los', 'Las'];
             const words = str.split(' ');
             for (let i = 1; i < words.length; i++) {
@@ -696,17 +682,36 @@
                     words[i] = words[i].toLowerCase();
                 }
             }
-
             return words.join(' ').trim();
         }
 
-        // Clean obsolete cart items whose product IDs no longer exist
         function sanitizeCart() {
-            if (!Array.isArray(userCart)) {
-                userCart = [];
-                return;
-            }
+            if (!Array.isArray(userCart)) { userCart = []; return; }
             userCart = userCart.filter(item => item && item.id && catalogProducts.some(p => p.id === item.id));
+        }
+
+        function renderBrandFilters() {
+            const container = document.getElementById('brand-filters-container');
+            if (!container) return;
+
+            container.innerHTML = availableBrands.map(b => {
+                const active = selectedBrandFilter === b;
+                return `
+                    <button onclick="filterByBrand('${b}')" class="px-3.5 py-1.5 rounded-full text-xs font-extrabold cursor-pointer transition-all whitespace-nowrap shadow-2xs ${
+                        active 
+                        ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xs scale-105' 
+                        : 'bg-stone-100 text-stone-700 hover:bg-orange-100 hover:text-orange-900'
+                    }">
+                        ${b}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function filterByBrand(brand) {
+            selectedBrandFilter = brand;
+            renderBrandFilters();
+            updateCatalogView();
         }
 
         function persistAppData() {
@@ -718,54 +723,6 @@
             if (headerBadge) headerBadge.textContent = `${catalogProducts.length} Productos`;
         }
 
-        function purgeLocalCacheDuplicates() {
-            if (!confirm('¿Deseas depurar la base de datos eliminando registros duplicados o elementos sin URL de imagen válida?')) return;
-            
-            let seenImages = new Set();
-            let cleaned = [];
-            let removedCount = 0;
-
-            catalogProducts.forEach(item => {
-                const img = (item.image || '').trim();
-                
-                if (!img || (!img.startsWith('http') && !img.startsWith('./')) || img.includes('placeholder')) {
-                    removedCount++;
-                    return;
-                }
-
-                if (seenImages.has(img)) {
-                    removedCount++;
-                    return;
-                }
-
-                seenImages.add(img);
-                cleaned.push(item);
-            });
-
-            catalogProducts = cleaned;
-            persistAppData();
-            renderAdminProductsList();
-            updateCatalogView();
-            showNotification(`¡Depuración lista! Se eliminaron ${removedCount} registros duplicados o rotos.`);
-        }
-
-        function renderBrandFilters() {
-            const container = document.getElementById('brand-filters-container');
-            container.innerHTML = availableBrands.map(brand => {
-                const isActive = selectedBrandFilter === brand;
-                const activeClass = isActive 
-                    ? 'bg-orange-600 text-white shadow-xs' 
-                    : 'bg-white text-stone-600 hover:bg-orange-50 border border-stone-200';
-                return `<button onclick="setBrandFilter('${brand}')" class="px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all shrink-0 cursor-pointer ${activeClass}">☀️ ${brand}</button>`;
-            }).join('');
-        }
-
-        function setBrandFilter(brand) {
-            selectedBrandFilter = brand;
-            renderBrandFilters();
-            updateCatalogView();
-        }
-
         function updateCatalogView() {
             const grid = document.getElementById('catalog-grid');
             const searchVal = document.getElementById('catalog-search').value.toLowerCase();
@@ -774,10 +731,12 @@
 
             let filtered = catalogProducts.filter(item => {
                 const isVisible = item.active !== false;
+                const hasValidPrice = item.price && Number(item.price) > 0;
                 const matchesBrand = selectedBrandFilter === 'TODAS' || item.brand === selectedBrandFilter;
                 const formattedName = formatProductName(item.name);
                 const matchesSearch = formattedName.toLowerCase().includes(searchVal) || item.brand.toLowerCase().includes(searchVal);
-                return isVisible && matchesBrand && matchesSearch;
+                
+                return isVisible && hasValidPrice && matchesBrand && matchesSearch;
             });
 
             if (sortVal === 'price-asc') filtered.sort((a, b) => a.price - b.price);
@@ -790,8 +749,8 @@
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-16 bg-white rounded-2xl border border-dashed border-orange-200">
                         <i class="fa-solid fa-box-open text-4xl text-orange-300 mb-2"></i>
-                        <p class="text-xs font-bold text-stone-700">No se encontraron productos disponibles en esta vista.</p>
-                        <p class="text-[11px] text-stone-400 mt-1">Usa el panel de administración para cargar tu nuevo lote de productos.</p>
+                        <p class="text-xs font-bold text-stone-700">No hay productos con precio publicado en esta vista.</p>
+                        <p class="text-[11px] text-stone-400 mt-1">Asigna precios a tus artículos en el panel de gestión y haz clic en "Guardar Cambios".</p>
                     </div>
                 `;
                 return;
@@ -816,8 +775,8 @@
                         </div>
                     </div>
                     <div class="p-3 flex flex-col flex-grow justify-between bg-white border-t border-orange-50">
-                        <div>
-                            <h4 class="font-bold text-stone-800 hover:text-orange-600 transition-colors text-xs md:text-sm line-clamp-2 min-h-[2.5rem] leading-snug cursor-pointer" onclick="openProductViewer(${item.id})">${cleanName}</h4>
+                        <div class="flex items-center justify-center min-h-[2.6rem] px-1 text-center">
+                            <h4 class="font-bold text-stone-800 hover:text-orange-600 transition-colors text-xs sm:text-sm line-clamp-2 leading-tight cursor-pointer" onclick="openProductViewer(${item.id})" title="${cleanName}">${cleanName}</h4>
                         </div>
                         <div class="mt-2.5 pt-2.5 border-t border-stone-100 flex items-center justify-between">
                             <div>
@@ -1083,59 +1042,99 @@
             if (pass === 'Sol2004') {
                 closeAdminPasswordModal();
                 document.getElementById('admin-panel').classList.remove('hidden');
+                
+                adminDraftProducts = JSON.parse(JSON.stringify(catalogProducts));
+                hasUnsavedChanges = false;
+                updateAdminSaveStatus();
+
                 switchAdminTab('bulk');
-                persistAppData();
             } else {
                 showNotification('Contraseña incorrecta.');
                 document.getElementById('admin-password-input').value = '';
             }
         }
 
-        function closeAdminPanel() {
-            document.getElementById('admin-panel').classList.add('hidden');
-            updateCatalogView();
+        function updateAdminSaveStatus() {
+            const badge = document.getElementById('admin-save-status-badge');
+            const saveBtn = document.getElementById('admin-save-btn');
+            const discardBtn = document.getElementById('admin-discard-btn');
+
+            if (hasUnsavedChanges) {
+                if (badge) {
+                    badge.className = 'text-[11px] font-bold text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-2xs';
+                    badge.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-600"></i> Cambios sin guardar`;
+                }
+                if (saveBtn) saveBtn.classList.remove('hidden');
+                if (discardBtn) discardBtn.classList.remove('hidden');
+            } else {
+                if (badge) {
+                    badge.className = 'text-[11px] font-bold text-stone-600 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-2xs';
+                    badge.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500"></i> Sin cambios pendientes`;
+                }
+                if (saveBtn) saveBtn.classList.add('hidden');
+                if (discardBtn) discardBtn.classList.add('hidden');
+            }
         }
 
-        function switchAdminTab(tabName) {
-            const tabBulk = document.getElementById('admin-tab-bulk');
-            const tabProducts = document.getElementById('admin-tab-products');
-            const tabDispatch = document.getElementById('admin-tab-dispatch');
+        function saveAdminDraft() {
+            if (!adminDraftProducts) return;
+            catalogProducts = JSON.parse(JSON.stringify(adminDraftProducts));
+            hasUnsavedChanges = false;
+            persistAppData();
+            updateAdminSaveStatus();
+            updateCatalogView();
+            showNotification('✓ ¡Cambios guardados en el catálogo!');
+        }
 
-            const btnBulk = document.getElementById('admin-tab-btn-bulk');
-            const btnProducts = document.getElementById('admin-tab-btn-products');
-            const btnDispatch = document.getElementById('admin-tab-btn-dispatch');
-
-            [tabBulk, tabProducts, tabDispatch].forEach(t => t.classList.add('hidden'));
-            [btnBulk, btnProducts, btnDispatch].forEach(b => {
-                b.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer text-stone-600 hover:text-stone-900 hover:bg-stone-200/60';
-            });
-
-            if (tabName === 'bulk') {
-                tabBulk.classList.remove('hidden');
-                btnBulk.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer border-t-2 border-orange-500 bg-white text-orange-600 shadow-xs';
-            } else if (tabName === 'products') {
-                tabProducts.classList.remove('hidden');
-                btnProducts.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer border-t-2 border-orange-500 bg-white text-orange-600 shadow-xs';
-                renderAdminProductsList();
-            } else if (tabName === 'dispatch') {
-                tabDispatch.classList.remove('hidden');
-                btnDispatch.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer border-t-2 border-orange-500 bg-white text-orange-600 shadow-xs';
-            }
+        function discardAdminDraft() {
+            if (!confirm('¿Deseas descartar los cambios que no has guardado en el borrador?')) return;
+            adminDraftProducts = JSON.parse(JSON.stringify(catalogProducts));
+            hasUnsavedChanges = false;
+            updateAdminSaveStatus();
+            renderAdminProductsList();
+            showNotification('Cambios descartados.');
         }
 
         function processSmartBulkUpload() {
             const textarea = document.getElementById('bulk-urls-textarea');
             const defaultBrand = document.getElementById('bulk-default-brand').value;
-            let lines = textarea.value.trim().split('\n').map(l => l.trim()).filter(l => l.length > 5);
+            let rawText = textarea.value.trim();
 
-            if (lines.length === 0) {
-                showNotification('Pega al menos una URL válida.');
+            if (!rawText) {
+                showNotification('Pega al menos un enlace o código válido.');
+                return;
+            }
+
+            if (!adminDraftProducts) adminDraftProducts = JSON.parse(JSON.stringify(catalogProducts));
+
+            let lines = rawText.split('\n');
+            let cleanedUrls = [];
+
+            lines.forEach(line => {
+                let trimmed = line.trim();
+                if (!trimmed) return;
+
+                let htmlMatch = trimmed.match(/src=["'](https?:\/\/[^"']+)["']/i);
+                if (htmlMatch && htmlMatch[1]) {
+                    cleanedUrls.push(htmlMatch[1]);
+                } else {
+                    let directMatches = trimmed.match(/https?:\/\/[^\s"'<>]+\.(png|jpg|jpeg|webp)/gi);
+                    if (directMatches) {
+                        directMatches.forEach(u => cleanedUrls.push(u));
+                    } else if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+                        cleanedUrls.push(trimmed);
+                    }
+                }
+            });
+
+            if (cleanedUrls.length === 0) {
+                showNotification('No se pudieron extraer enlaces de imagen válidos.');
                 return;
             }
 
             let importedCount = 0;
 
-            lines.forEach((url, idx) => {
+            cleanedUrls.forEach((url, idx) => {
                 let cleanName = `SOL-${Math.floor(100 + Math.random() * 900)}`;
                 let detectedBrand = defaultBrand;
 
@@ -1157,7 +1156,7 @@
                     }
                 } catch(e) {}
 
-                catalogProducts.unshift({
+                adminDraftProducts.unshift({
                     id: Date.now() + idx,
                     name: cleanName,
                     brand: detectedBrand,
@@ -1169,10 +1168,10 @@
                 importedCount++;
             });
 
-            persistAppData();
+            hasUnsavedChanges = true;
+            updateAdminSaveStatus();
             textarea.value = '';
-            updateCatalogView();
-            showNotification(`¡${importedCount} productos cargados! Ajusta sus precios en inventario.`);
+            showNotification(`¡${importedCount} productos agregados al borrador! Asigna precios y presiona "Guardar Cambios".`);
             switchAdminTab('products');
         }
 
@@ -1182,7 +1181,9 @@
             const search = (document.getElementById('admin-product-search')?.value || '').toLowerCase();
             const countBadge = document.getElementById('admin-products-count');
 
-            let filtered = catalogProducts.filter(p => {
+            const sourceList = adminDraftProducts || catalogProducts;
+
+            let filtered = sourceList.filter(p => {
                 const matchesBrand = filterBrand === 'TODAS' || p.brand === filterBrand;
                 const formattedName = formatProductName(p.name);
                 const matchesSearch = formattedName.toLowerCase().includes(search) || p.brand.toLowerCase().includes(search);
@@ -1196,14 +1197,19 @@
                 return;
             }
 
-            list.innerHTML = filtered.map(item => `
-                <div class="bg-white border border-stone-200 p-3 sm:p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-3 shadow-2xs">
+            list.innerHTML = filtered.map(item => {
+                const isZeroPrice = !item.price || Number(item.price) === 0;
+                return `
+                <div class="bg-white border border-stone-200 p-3 sm:p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-3 shadow-2xs ${isZeroPrice ? 'border-l-4 border-l-amber-500' : ''}">
                     <div class="flex items-center gap-3 w-full md:w-auto">
                         <div class="cursor-pointer group relative shrink-0" onclick="openGeneralZoom('${item.image}')">
                             <img src="${item.image}" onerror="this.src='https://placehold.co/200x200/fed7aa/7c2d12?text=Sin+Imagen'" class="w-14 h-14 object-contain bg-stone-50 rounded-xl p-1 product-img-clean border border-stone-200 group-hover:scale-105 transition-transform">
                         </div>
                         <div class="w-full md:w-64 space-y-1">
-                            <label class="text-[10px] text-stone-400 font-bold block uppercase">Nombre del Producto:</label>
+                            <div class="flex items-center justify-between">
+                                <label class="text-[10px] text-stone-400 font-bold block uppercase">Nombre del Producto:</label>
+                                ${isZeroPrice ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-1.5 py-0.5 rounded">⚠️ Sin Precio (Oculto al cliente)</span>' : ''}
+                            </div>
                             <input type="text" value="${formatProductName(item.name)}" onchange="updateAdminItemField(${item.id}, 'name', this.value)" class="bg-stone-50 px-2.5 py-1 rounded-lg text-stone-800 text-xs font-bold border border-stone-200 focus:ring-1 focus:ring-orange-500 focus:outline-none w-full" title="Editar Nombre">
                         </div>
                     </div>
@@ -1245,11 +1251,12 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function updateAdminItemField(id, field, value) {
-            const product = catalogProducts.find(p => p.id === id);
+            if (!adminDraftProducts) adminDraftProducts = JSON.parse(JSON.stringify(catalogProducts));
+            const product = adminDraftProducts.find(p => p.id === id);
             if (product) {
                 if (field === 'price' || field === 'stock') {
                     product[field] = parseFloat(value) || 0;
@@ -1258,29 +1265,66 @@
                 } else {
                     product[field] = value;
                 }
-                persistAppData();
-                updateCatalogView();
-                showNotification(`✓ Guardado: ${formatProductName(product.name)}`);
+                hasUnsavedChanges = true;
+                updateAdminSaveStatus();
+                renderAdminProductsList();
             }
         }
 
         function toggleAdminItemActive(id) {
-            const product = catalogProducts.find(p => p.id === id);
+            if (!adminDraftProducts) adminDraftProducts = JSON.parse(JSON.stringify(catalogProducts));
+            const product = adminDraftProducts.find(p => p.id === id);
             if (product) {
                 product.active = product.active === false ? true : false;
-                persistAppData();
+                hasUnsavedChanges = true;
+                updateAdminSaveStatus();
                 renderAdminProductsList();
-                updateCatalogView();
-                showNotification(`"${formatProductName(product.name)}" marcado como ${product.active ? 'Visible' : 'Agotado'}.`);
             }
         }
 
         function deleteAdminItem(id) {
-            catalogProducts = catalogProducts.filter(p => p.id !== id);
-            persistAppData();
+            if (!adminDraftProducts) adminDraftProducts = JSON.parse(JSON.stringify(catalogProducts));
+            adminDraftProducts = adminDraftProducts.filter(p => p.id !== id);
+            hasUnsavedChanges = true;
+            updateAdminSaveStatus();
             renderAdminProductsList();
+        }
+
+        function closeAdminPanel() {
+            if (hasUnsavedChanges) {
+                if (confirm('Tienes cambios en el borrador sin guardar. ¿Deseas salir guardando los cambios?')) {
+                    saveAdminDraft();
+                }
+            }
+            document.getElementById('admin-panel').classList.add('hidden');
             updateCatalogView();
-            showNotification('Producto eliminado.');
+        }
+
+        function switchAdminTab(tabName) {
+            const tabBulk = document.getElementById('admin-tab-bulk');
+            const tabProducts = document.getElementById('admin-tab-products');
+            const tabDispatch = document.getElementById('admin-tab-dispatch');
+
+            const btnBulk = document.getElementById('admin-tab-btn-bulk');
+            const btnProducts = document.getElementById('admin-tab-btn-products');
+            const btnDispatch = document.getElementById('admin-tab-btn-dispatch');
+
+            [tabBulk, tabProducts, tabDispatch].forEach(t => t.classList.add('hidden'));
+            [btnBulk, btnProducts, btnDispatch].forEach(b => {
+                b.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer text-stone-600 hover:text-stone-900 hover:bg-stone-200/60';
+            });
+
+            if (tabName === 'bulk') {
+                tabBulk.classList.remove('hidden');
+                btnBulk.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer border-t-2 border-orange-500 bg-white text-orange-600 shadow-xs';
+            } else if (tabName === 'products') {
+                tabProducts.classList.remove('hidden');
+                btnProducts.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer border-t-2 border-orange-500 bg-white text-orange-600 shadow-xs';
+                renderAdminProductsList();
+            } else if (tabName === 'dispatch') {
+                tabDispatch.classList.remove('hidden');
+                btnDispatch.className = 'py-2.5 px-4 font-extrabold text-xs rounded-t-xl transition-all flex items-center gap-2 cursor-pointer border-t-2 border-orange-500 bg-white text-orange-600 shadow-xs';
+            }
         }
 
         function loadCartIntoDispatch() {
@@ -1342,6 +1386,12 @@
         }
 
         function downloadWebFile() {
+            if (hasUnsavedChanges) {
+                if (confirm('Tienes cambios sin guardar en el borrador. ¿Deseas guardarlos automáticamente antes de publicar?')) {
+                    saveAdminDraft();
+                }
+            }
+
             document.getElementById('admin-panel').classList.add('hidden');
             document.getElementById('cart-drawer').classList.add('hidden');
             document.getElementById('general-zoom-modal').classList.add('hidden');
@@ -1361,7 +1411,7 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            showNotification(`¡Archivo index.html limpio descargado con éxito (${catalogProducts.length} productos)!`);
+            showNotification(`¡Archivo index.html descargado con éxito (${catalogProducts.length} productos)!`);
         }
 
         function showNotification(msg) {
