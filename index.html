@@ -289,7 +289,7 @@
         </div>
     </div>
 
-    <!-- Visor General de Imagen Ampliada (Lightbox) -->
+    <!-- Visor General de Imagen Ampliada (Lightbox) con Precio Destacado y Botón Simplificado -->
     <div id="general-zoom-modal" class="fixed inset-0 z-[70] bg-stone-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 hidden" onclick="closeGeneralZoomModal()">
         <div class="bg-white rounded-3xl max-w-2xl w-full p-4 sm:p-5 flex flex-col items-center justify-center relative shadow-2xl space-y-3" onclick="event.stopPropagation()">
             <div class="w-full flex items-center justify-between border-b border-orange-100 pb-2.5">
@@ -301,16 +301,16 @@
                     <i class="fa-solid fa-xmark text-base"></i>
                 </button>
             </div>
-            <div class="max-h-[65vh] sm:max-h-[70vh] w-full flex items-center justify-center bg-stone-50/80 p-2 sm:p-4 rounded-2xl border border-orange-100 overflow-hidden relative">
-                <img id="general-zoom-img" src="" onerror="this.src='https://placehold.co/400x400/fed7aa/7c2d12?text=Sin+Imagen'" class="max-h-[60vh] sm:max-h-[65vh] max-w-full object-contain product-img-clean shadow-sm transition-transform duration-300 hover:scale-105">
+            <div class="max-h-[60vh] sm:max-h-[65vh] w-full flex items-center justify-center bg-stone-50/80 p-2 sm:p-4 rounded-2xl border border-orange-100 overflow-hidden relative">
+                <img id="general-zoom-img" src="" onerror="this.src='https://placehold.co/400x400/fed7aa/7c2d12?text=Sin+Imagen'" class="max-h-[55vh] sm:max-h-[60vh] max-w-full object-contain product-img-clean shadow-sm transition-transform duration-300 hover:scale-105">
             </div>
-            <div class="w-full flex items-center justify-between pt-1">
+            <div class="w-full flex items-center justify-between pt-1 px-1">
                 <div>
-                    <span class="text-[9px] text-stone-400 uppercase font-bold block">PRECIO</span>
-                    <span id="general-zoom-price" class="font-extrabold text-orange-600 text-sm sm:text-base"></span>
+                    <span class="text-[10px] text-stone-400 uppercase font-extrabold tracking-wider block">PRECIO</span>
+                    <span id="general-zoom-price" class="font-black text-orange-600 text-xl sm:text-2xl"></span>
                 </div>
-                <button id="general-zoom-add-btn" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-orange-600 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer active:scale-95" style="display: none;">
-                    <i class="fa-solid fa-cart-plus"></i> Agregar al Pedido
+                <button id="general-zoom-add-btn" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-orange-600 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2.5 cursor-pointer active:scale-95" style="display: none;">
+                    <i class="fa-solid fa-cart-plus text-base"></i> Agregar
                 </button>
             </div>
         </div>
@@ -428,7 +428,7 @@
         </div>
     </div>
 
-    <!-- PANEL DE ADMINISTRADOR CON BORRADOR SEGURO -->
+    <!-- PANEL DE ADMINISTRADOR -->
     <div id="admin-panel" class="fixed inset-0 z-50 bg-stone-950/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 hidden">
         <div class="bg-white rounded-3xl max-w-5xl w-full max-h-[95vh] flex flex-col overflow-hidden shadow-2xl">
             
@@ -481,15 +481,14 @@
                     <div class="bg-white border border-stone-200 p-4 sm:p-5 rounded-2xl space-y-3 shadow-xs">
                         <div class="flex items-center justify-between border-b border-stone-100 pb-2">
                             <h4 class="font-black text-orange-600 flex items-center gap-2 text-xs uppercase tracking-wider">
-                                <i class="fa-solid fa-list-ul text-sm"></i> Pegar Listado de Enlaces (Directos o Sitios Web)
+                                <i class="fa-solid fa-list-ul text-sm"></i> Pegar Listado de Enlaces
                             </h4>
                             <span class="text-[10px] bg-orange-100 text-orange-800 font-bold px-2.5 py-0.5 rounded-full">Extracción Inteligente</span>
                         </div>
                         <p class="text-stone-500 text-[11px]">
-                            Pega abajo tu lista de enlaces (Enlace directo o Enlace directo para sitios web de Postimages). Se enviarán al <strong>Borrador</strong> para que puedas asignarles precio antes de publicarlos:
+                            Pega abajo tu lista de enlaces para añadirlos al borrador y asignarles precio y stock:
                         </p>
-                        
-                        <textarea id="bulk-urls-textarea" rows="7" placeholder="https://i.postimg.cc/MpL73XpL/aliados-arrurru-colonia-original-bebe-jpg.png&#10;<a href=...><img src=...>" class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none font-mono text-[11px]"></textarea>
+                        <textarea id="bulk-urls-textarea" rows="7" placeholder="https://i.postimg.cc/..." class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none font-mono text-[11px]"></textarea>
 
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
                             <div class="w-full sm:w-auto flex items-center gap-2">
@@ -504,7 +503,6 @@
                                     <option value="L'BEL">L'BEL</option>
                                 </select>
                             </div>
-                            
                             <button onclick="processSmartBulkUpload()" class="w-full sm:w-auto px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-extrabold rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-xs active:scale-95">
                                 <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Agregar Lote al Borrador
                             </button>
@@ -519,7 +517,6 @@
                                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400"></i>
                                 <input type="text" id="admin-product-search" oninput="renderAdminProductsList()" placeholder="Buscar por nombre o ref..." class="w-full pl-8 pr-3 py-1.5 bg-stone-50 border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-orange-500">
                             </div>
-                            
                             <div class="flex items-center gap-2 w-full sm:w-auto">
                                 <label class="font-bold text-stone-600 text-[11px] shrink-0">Filtrar Marca:</label>
                                 <select id="admin-brand-filter-select" onchange="renderAdminProductsList()" class="px-3 py-1.5 bg-stone-50 border border-stone-200 rounded-xl text-xs font-bold text-stone-700 focus:outline-none cursor-pointer w-full sm:w-auto">
@@ -559,7 +556,6 @@
                             Pega aquí el texto del mensaje recibido para analizar los productos ordenados con sus fotografías:
                         </p>
                         <textarea id="dispatch-text-input" rows="3" placeholder="Pega el mensaje de pedido aquí..." class="w-full p-3 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-orange-500 focus:outline-none"></textarea>
-                        
                         <div class="flex justify-end gap-2">
                             <button onclick="loadCartIntoDispatch()" class="px-3 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-xs cursor-pointer">Usar Carrito Actual</button>
                             <button onclick="parseWhatsAppOrder()" class="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-extrabold rounded-xl text-xs cursor-pointer">Analizar Pedido</button>
@@ -580,64 +576,64 @@
     </div>
 
     <script>
-        // BASE DE DATOS COMPLETA CON PRECIOS ACTUALIZADOS
+        // BASE DE DATOS COMPLETA CON PRECIOS Y STOCK CONFIGURABLE
         const initialProducts = [
-            { id: 1791145138979, name: "Perfume Mithyka", brand: "L'BEL", price: 100000, stock: 1, image: "https://i.postimg.cc/DfgnrXC1/Perfume-Mithyka.png", active: true },
-            { id: 1791145138976, name: "Perfume Bleu Intense", brand: "L'BEL", price: 60000, stock: 1, image: "https://i.postimg.cc/sfcsYhnm/Perfume-Bleu-Intense.png", active: true },
-            { id: 1791145108420, name: "Perfume Expression", brand: "ÉSIKA", price: 50000, stock: 1, image: "https://i.postimg.cc/K891JWJP/Perfume-Expression.png", active: true },
-            { id: 1791145108415, name: "Desodorante You", brand: "ÉSIKA", price: 10000, stock: 1, image: "https://i.postimg.cc/vZP43K31/Desodorante-You.png", active: true },
-            { id: 1791145108414, name: "Desodorante Exus", brand: "ÉSIKA", price: 10000, stock: 1, image: "https://i.postimg.cc/JzTsPFPD/Desodorante-Exus.png", active: true },
-            { id: 1791145108413, name: "Desodorante Expressions", brand: "ÉSIKA", price: 10000, stock: 1, image: "https://i.postimg.cc/Z5fWVQVW/Desodorante-Expressions.png", active: true },
-            { id: 1791145108412, name: "Desodorante Dorsay", brand: "ÉSIKA", price: 10000, stock: 1, image: "https://i.postimg.cc/SxZnDPDz/Desodorante-Dorsay.png", active: true },
-            { id: 1791145108407, name: "Colonia Agu", brand: "ÉSIKA", price: 60000, stock: 1, image: "https://i.postimg.cc/T3kKCsCc/Colonia-agu.png", active: true },
-            { id: 1791145080661, name: "Perfume Sweet Black Intense", brand: "CYZONE", price: 40000, stock: 1, image: "https://i.postimg.cc/jqJyCRvH/Perfume-sweet-black-intense.png", active: true },
-            { id: 1791145080658, name: "Perfume Dancing Night", brand: "CYZONE", price: 45000, stock: 1, image: "https://i.postimg.cc/Y0gFPxhh/Perfume-Dancing-Night.png", active: true },
-            { id: 1791145080657, name: "Perfume All Black Vip", brand: "CYZONE", price: 50000, stock: 1, image: "https://i.postimg.cc/VvMthFd6/Perfume-All-Black-VIP.png", active: true },
-            { id: 1791145080653, name: "Desodorante All Black", brand: "CYZONE", price: 10000, stock: 1, image: "https://i.postimg.cc/VvMthFdN/Desodorante-All-Black.png", active: true },
-            { id: 1791145080651, name: "Crema Perfurmada Corporal Dancing Night", brand: "CYZONE", price: 18000, stock: 1, image: "https://i.postimg.cc/mkM9nStP/Crema-perfurmada-corporal-dancing-night.png", active: true },
-            { id: 1791145059727, name: "Splash Te de Manzanilla y Lavanda", brand: "NATURA", price: 45000, stock: 1, image: "https://i.postimg.cc/zD0Yb1By/Splash-te-de-manzanilla-y-lavanda.png", active: true },
-            { id: 1791145059726, name: "Splash Cereza y Avellana", brand: "NATURA", price: 45000, stock: 1, image: "https://i.postimg.cc/G3qn812T/Splash-cereza-y-avellana.png", active: true },
-            { id: 1791145059720, name: "Perfume Kaiak 100 ml", brand: "NATURA", price: 140000, stock: 1, image: "https://i.postimg.cc/sfwCQRXg/Perfume-Kaiak-100m-L.png", active: true },
-            { id: 1791145059719, name: "Perfume Humor Propio", brand: "NATURA", price: 50000, stock: 1, image: "https://i.postimg.cc/2j2Nbf63/Perfume-humor-propio.png", active: true },
-            { id: 1791145059718, name: "Perfume Humor Mi Primer 75 ml", brand: "NATURA", price: 45000, stock: 1, image: "https://i.postimg.cc/xjtVJSCT/Perfume-Humor-mi-primer-75m-L.png", active: true },
-            { id: 1791145059717, name: "Perfume Aguas Frambuesa", brand: "NATURA", price: 60000, stock: 1, image: "https://i.postimg.cc/3NLsP26s/Perfume-aguas-frambuesa.png", active: true },
-            { id: 1791145059716, name: "Perfume Aguas Cítricos", brand: "NATURA", price: 60000, stock: 1, image: "https://i.postimg.cc/J0Tf9jgS/Perfume-aguas-citricos.png", active: true },
-            { id: 1791145059714, name: "Jabones Tododia Corazones", brand: "NATURA", price: 40000, stock: 1, image: "https://i.postimg.cc/QCxL4f6F/Jabones-tododia-corazones.jpg", active: true },
-            { id: 1791145059713, name: "Jabones en Barra Todo Dia Especial", brand: "NATURA", price: 40000, stock: 1, image: "https://i.postimg.cc/90F38Lxw/Jabones-en-barra-todo-dia-especial.jpg", active: true },
-            { id: 1791145059708, name: "Desodorante Invisible", brand: "NATURA", price: 25000, stock: 1, image: "https://i.postimg.cc/SRZBwc5P/Desodorante-invisible.png", active: true },
-            { id: 1791145059707, name: "Desodorante Erva Doce", brand: "NATURA", price: 25000, stock: 1, image: "https://i.postimg.cc/MHsCh14d/Desodorante-erva-doce.png", active: true },
-            { id: 1791145059704, name: "Crema para Peinar Flor de Cereza y Aguacate", brand: "NATURA", price: 20000, stock: 1, image: "https://i.postimg.cc/T1Y87tk1/Crema-para-peinar-flor-de-cereza-y-aguacate.jpg", active: true },
-            { id: 1791145059703, name: "Crema para Peinar Cabello Rizado Mora y Aceite de Coco", brand: "NATURA", price: 20000, stock: 1, image: "https://i.postimg.cc/ZnKk7wfd/Crema-para-peinar-cabello-rizado-mora-y-aceite-de-coco.jpg", active: true },
-            { id: 1791145059697, name: "Crema Corporal Ciruela y Flor de Vainilla", brand: "NATURA", price: 60000, stock: 1, image: "https://i.postimg.cc/9F05yNRB/Crema-corporal-ciruela-y-flor-de-vainilla.png", active: true },
-            { id: 1791145059696, name: "Crema Corpora Fresa y Vainilla Dorada", brand: "NATURA", price: 60000, stock: 1, image: "https://i.postimg.cc/RVh5wb6d/Crema-corpora-fresa-y-vainilla-dorada.png", active: true },
-            { id: 1791145059695, name: "Corrector Cobertura Extrema", brand: "NATURA", price: 30000, stock: 1, image: "https://i.postimg.cc/D0C9t1DD/Corrector-cobertura-extrema.png", active: true },
-            { id: 1791145037342, name: "Splash Soy Unica", brand: "YANBAL", price: 35000, stock: 1, image: "https://i.postimg.cc/8cVdN38C/Splash-soy-unica.png", active: true },
-            { id: 1791145037338, name: "Perfume Qhm Black", brand: "YANBAL", price: 150000, stock: 1, image: "https://i.postimg.cc/76zMv4Rv/Perfume-QHM-Black.png", active: true },
-            { id: 1791145037337, name: "Perfume Qhm 100 ml", brand: "YANBAL", price: 150000, stock: 1, image: "https://i.postimg.cc/HxM4GmhK/Perfume-QHM-100m-L.png", active: true },
-            { id: 1791145037336, name: "Perfume Pasion", brand: "YANBAL", price: 100000, stock: 1, image: "https://i.postimg.cc/QCrghPLG/Perfume-Pasion.png", active: true },
-            { id: 1791145037335, name: "Perfume Osadia Infinita", brand: "YANBAL", price: 120000, stock: 1, image: "https://i.postimg.cc/PJkbTcGh/Perfume-Osadia-Infinita.png", active: true },
-            { id: 1791145037334, name: "Perfume Musk", brand: "YANBAL", price: 90000, stock: 1, image: "https://i.postimg.cc/63ZLsKP6/Perfume-Musk.png", active: true },
-            { id: 1791145037333, name: "Perfume Gaia", brand: "YANBAL", price: 120000, stock: 1, image: "https://i.postimg.cc/5yM5bGcf/Perfume-Gaia.png", active: true },
-            { id: 1791145037329, name: "Perfume Atom Absolute", brand: "YANBAL", price: 120000, stock: 1, image: "https://i.postimg.cc/fLdj4sPs/Perfume-Atom-Absolute.png", active: true },
-            { id: 1791145037327, name: "Perfume 43 N Paralel", brand: "YANBAL", price: 160000, stock: 1, image: "https://i.postimg.cc/63ZLsKm1/Perfume-43-N-Paralel.png", active: true },
-            { id: 1791145037324, name: "Desodorante Solo", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/s2q90xwT/Desodorante-Solo.png", active: true },
-            { id: 1791145037323, name: "Desodorante Qhm", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/tT6t0bMt/Desodorante-QHM.png", active: true },
-            { id: 1791145037322, name: "Desodorante Piel Sensible", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/Pq9zFJ22/Desodorante-piel-sensible.png", active: true },
-            { id: 1791145037321, name: "Desodorante Original 48 Horas", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/hG6b3vps/Desodorante-original-48-horas.png", active: true },
-            { id: 1791145037320, name: "Desodorante Gaia", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/Ss9704vL/Desodorante-Gaia.png", active: true },
-            { id: 1791145037319, name: "Desodorante Brisa Floral", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/NMX7htz6/Desodorante-brisa-floral.png", active: true },
-            { id: 1791145037318, name: "Desodorante Aclarante", brand: "YANBAL", price: 12000, stock: 1, image: "https://i.postimg.cc/k5zFhGfv/Desodorante-aclarante.png", active: true },
-            { id: 1791144994601, name: "Shampoo Sin Sal Nutrición Absoluta", brand: "AVON", price: 35000, stock: 1, image: "https://i.postimg.cc/7YfM3gxN/shampoo-sin-sal-nutricion-absoluta.png", active: true },
-            { id: 1791144994599, name: "Sérum de Tratamiento Rios Fabulosos", brand: "AVON", price: 20000, stock: 1, image: "https://i.postimg.cc/Wp9wq9P7/Serum-de-tratamiento-rios-fabulosos.png", active: true },
-            { id: 1791144994593, name: "Óleo de Tratamiento Hidratante Nutrición Absoluta", brand: "AVON", price: 20000, stock: 1, image: "https://i.postimg.cc/qMzXs8kc/oleo-de-tratamiento-hidratante-nutricion-absoluta.png", active: true },
-            { id: 1791144994591, name: "Gel de Limpieza Íntima Femenina 3 en 1", brand: "AVON", price: 20000, stock: 1, image: "https://i.postimg.cc/dtLm28qg/Gel-de-limpieza-intima-femenina-3-en-1.png", active: true },
-            { id: 1791144994589, name: "Desorodorante Musk Marine", brand: "AVON", price: 12000, stock: 1, image: "https://i.postimg.cc/2jH7LHfQ/Desorodorante-musk-marine.png", active: true },
-            { id: 1791144994588, name: "Desodorante Wild Country", brand: "AVON", price: 12000, stock: 1, image: "https://i.postimg.cc/VLp9Dd6Z/desodorante-wild-country.png", active: true },
-            { id: 1791144994587, name: "Desodorante Musk Marine", brand: "AVON", price: 12000, stock: 1, image: "https://i.postimg.cc/4NqvBmdF/desodorante-musk-marine.png", active: true },
-            { id: 1791144994581, name: "Crema 3 en 1 para Pies con Callosidades", brand: "AVON", price: 20000, stock: 1, image: "https://i.postimg.cc/pV0J50tJ/Crema-3-en-1-para-pies-con-callosidades.png", active: true },
-            { id: 1791144994577, name: "Colonia Spray con Destellos para el Cuerpo", brand: "AVON", price: 18000, stock: 1, image: "https://i.postimg.cc/rFKC1S8n/colonia-spray-con-destellos-para-el-cuerpo.png", active: true },
-            { id: 1791144964741, name: "Carmel Gel Barber Afeitar", brand: "ALIADOS", price: 6000, stock: 1, image: "https://i.postimg.cc/zGQC23GP/aliados-carmel-gel-barber-afeitar-jpg.png", active: true },
-            { id: 1791144964740, name: "Arrurru Colonia Original Bebé", brand: "ALIADOS", price: 25000, stock: 1, image: "https://i.postimg.cc/MpL73XpL/aliados-arrurru-colonia-original-bebe-jpg.png", active: true },
+            { id: 1791145138979, name: "Perfume Mithyka", brand: "L'BEL", price: 100000, stock: 5, image: "https://i.postimg.cc/DfgnrXC1/Perfume-Mithyka.png", active: true },
+            { id: 1791145138976, name: "Perfume Bleu Intense", brand: "L'BEL", price: 60000, stock: 5, image: "https://i.postimg.cc/sfcsYhnm/Perfume-Bleu-Intense.png", active: true },
+            { id: 1791145108420, name: "Perfume Expression", brand: "ÉSIKA", price: 50000, stock: 5, image: "https://i.postimg.cc/K891JWJP/Perfume-Expression.png", active: true },
+            { id: 1791145108415, name: "Desodorante You", brand: "ÉSIKA", price: 10000, stock: 10, image: "https://i.postimg.cc/vZP43K31/Desodorante-You.png", active: true },
+            { id: 1791145108414, name: "Desodorante Exus", brand: "ÉSIKA", price: 10000, stock: 10, image: "https://i.postimg.cc/JzTsPFPD/Desodorante-Exus.png", active: true },
+            { id: 1791145108413, name: "Desodorante Expressions", brand: "ÉSIKA", price: 10000, stock: 10, image: "https://i.postimg.cc/Z5fWVQVW/Desodorante-Expressions.png", active: true },
+            { id: 1791145108412, name: "Desodorante Dorsay", brand: "ÉSIKA", price: 10000, stock: 10, image: "https://i.postimg.cc/SxZnDPDz/Desodorante-Dorsay.png", active: true },
+            { id: 1791145108407, name: "Colonia Agu", brand: "ÉSIKA", price: 60000, stock: 5, image: "https://i.postimg.cc/T3kKCsCc/Colonia-agu.png", active: true },
+            { id: 1791145080661, name: "Perfume Sweet Black Intense", brand: "CYZONE", price: 40000, stock: 5, image: "https://i.postimg.cc/jqJyCRvH/Perfume-sweet-black-intense.png", active: true },
+            { id: 1791145080658, name: "Perfume Dancing Night", brand: "CYZONE", price: 45000, stock: 5, image: "https://i.postimg.cc/Y0gFPxhh/Perfume-Dancing-Night.png", active: true },
+            { id: 1791145080657, name: "Perfume All Black Vip", brand: "CYZONE", price: 50000, stock: 5, image: "https://i.postimg.cc/VvMthFd6/Perfume-All-Black-VIP.png", active: true },
+            { id: 1791145080653, name: "Desodorante All Black", brand: "CYZONE", price: 10000, stock: 10, image: "https://i.postimg.cc/VvMthFdN/Desodorante-All-Black.png", active: true },
+            { id: 1791145080651, name: "Crema Perfurmada Corporal Dancing Night", brand: "CYZONE", price: 18000, stock: 5, image: "https://i.postimg.cc/mkM9nStP/Crema-perfurmada-corporal-dancing-night.png", active: true },
+            { id: 1791145059727, name: "Splash Te de Manzanilla y Lavanda", brand: "NATURA", price: 45000, stock: 5, image: "https://i.postimg.cc/zD0Yb1By/Splash-te-de-manzanilla-y-lavanda.png", active: true },
+            { id: 1791145059726, name: "Splash Cereza y Avellana", brand: "NATURA", price: 45000, stock: 5, image: "https://i.postimg.cc/G3qn812T/Splash-cereza-y-avellana.png", active: true },
+            { id: 1791145059720, name: "Perfume Kaiak 100 ml", brand: "NATURA", price: 140000, stock: 5, image: "https://i.postimg.cc/sfwCQRXg/Perfume-Kaiak-100m-L.png", active: true },
+            { id: 1791145059719, name: "Perfume Humor Propio", brand: "NATURA", price: 50000, stock: 5, image: "https://i.postimg.cc/2j2Nbf63/Perfume-humor-propio.png", active: true },
+            { id: 1791145059718, name: "Perfume Humor Mi Primer 75 ml", brand: "NATURA", price: 45000, stock: 5, image: "https://i.postimg.cc/xjtVJSCT/Perfume-Humor-mi-primer-75m-L.png", active: true },
+            { id: 1791145059717, name: "Perfume Aguas Frambuesa", brand: "NATURA", price: 60000, stock: 5, image: "https://i.postimg.cc/3NLsP26s/Perfume-aguas-frambuesa.png", active: true },
+            { id: 1791145059716, name: "Perfume Aguas Cítricos", brand: "NATURA", price: 60000, stock: 5, image: "https://i.postimg.cc/J0Tf9jgS/Perfume-aguas-citricos.png", active: true },
+            { id: 1791145059714, name: "Jabones Tododia Corazones", brand: "NATURA", price: 40000, stock: 5, image: "https://i.postimg.cc/QCxL4f6F/Jabones-tododia-corazones.jpg", active: true },
+            { id: 1791145059713, name: "Jabones en Barra Todo Dia Especial", brand: "NATURA", price: 40000, stock: 5, image: "https://i.postimg.cc/90F38Lxw/Jabones-en-barra-todo-dia-especial.jpg", active: true },
+            { id: 1791145059708, name: "Desodorante Invisible", brand: "NATURA", price: 25000, stock: 10, image: "https://i.postimg.cc/SRZBwc5P/Desodorante-invisible.png", active: true },
+            { id: 1791145059707, name: "Desodorante Erva Doce", brand: "NATURA", price: 25000, stock: 10, image: "https://i.postimg.cc/MHsCh14d/Desodorante-erva-doce.png", active: true },
+            { id: 1791145059704, name: "Crema para Peinar Flor de Cereza y Aguacate", brand: "NATURA", price: 20000, stock: 5, image: "https://i.postimg.cc/T1Y87tk1/Crema-para-peinar-flor-de-cereza-y-aguacate.jpg", active: true },
+            { id: 1791145059703, name: "Crema para Peinar Cabello Rizado Mora y Aceite de Coco", brand: "NATURA", price: 20000, stock: 5, image: "https://i.postimg.cc/ZnKk7wfd/Crema-para-peinar-cabello-rizado-mora-y-aceite-de-coco.jpg", active: true },
+            { id: 1791145059697, name: "Crema Corporal Ciruela y Flor de Vainilla", brand: "NATURA", price: 60000, stock: 5, image: "https://i.postimg.cc/9F05yNRB/Crema-corporal-ciruela-y-flor-de-vainilla.png", active: true },
+            { id: 1791145059696, name: "Crema Corpora Fresa y Vainilla Dorada", brand: "NATURA", price: 60000, stock: 5, image: "https://i.postimg.cc/RVh5wb6d/Crema-corpora-fresa-y-vainilla-dorada.png", active: true },
+            { id: 1791145059695, name: "Corrector Cobertura Extrema", brand: "NATURA", price: 30000, stock: 5, image: "https://i.postimg.cc/D0C9t1DD/Corrector-cobertura-extrema.png", active: true },
+            { id: 1791145037342, name: "Splash Soy Unica", brand: "YANBAL", price: 35000, stock: 5, image: "https://i.postimg.cc/8cVdN38C/Splash-soy-unica.png", active: true },
+            { id: 1791145037338, name: "Perfume Qhm Black", brand: "YANBAL", price: 150000, stock: 5, image: "https://i.postimg.cc/76zMv4Rv/Perfume-QHM-Black.png", active: true },
+            { id: 1791145037337, name: "Perfume Qhm 100 ml", brand: "YANBAL", price: 150000, stock: 5, image: "https://i.postimg.cc/HxM4GmhK/Perfume-QHM-100m-L.png", active: true },
+            { id: 1791145037336, name: "Perfume Pasion", brand: "YANBAL", price: 100000, stock: 5, image: "https://i.postimg.cc/QCrghPLG/Perfume-Pasion.png", active: true },
+            { id: 1791145037335, name: "Perfume Osadia Infinita", brand: "YANBAL", price: 120000, stock: 5, image: "https://i.postimg.cc/PJkbTcGh/Perfume-Osadia-Infinita.png", active: true },
+            { id: 1791145037334, name: "Perfume Musk", brand: "YANBAL", price: 90000, stock: 5, image: "https://i.postimg.cc/63ZLsKP6/Perfume-Musk.png", active: true },
+            { id: 1791145037333, name: "Perfume Gaia", brand: "YANBAL", price: 120000, stock: 5, image: "https://i.postimg.cc/5yM5bGcf/Perfume-Gaia.png", active: true },
+            { id: 1791145037329, name: "Perfume Atom Absolute", brand: "YANBAL", price: 120000, stock: 5, image: "https://i.postimg.cc/fLdj4sPs/Perfume-Atom-Absolute.png", active: true },
+            { id: 1791145037327, name: "Perfume 43 N Paralel", brand: "YANBAL", price: 160000, stock: 5, image: "https://i.postimg.cc/63ZLsKm1/Perfume-43-N-Paralel.png", active: true },
+            { id: 1791145037324, name: "Desodorante Solo", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/s2q90xwT/Desodorante-Solo.png", active: true },
+            { id: 1791145037323, name: "Desodorante Qhm", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/tT6t0bMt/Desodorante-QHM.png", active: true },
+            { id: 1791145037322, name: "Desodorante Piel Sensible", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/Pq9zFJ22/Desodorante-piel-sensible.png", active: true },
+            { id: 1791145037321, name: "Desodorante Original 48 Horas", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/hG6b3vps/Desodorante-original-48-horas.png", active: true },
+            { id: 1791145037320, name: "Desodorante Gaia", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/Ss9704vL/Desodorante-Gaia.png", active: true },
+            { id: 1791145037319, name: "Desodorante Brisa Floral", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/NMX7htz6/Desodorante-brisa-floral.png", active: true },
+            { id: 1791145037318, name: "Desodorante Aclarante", brand: "YANBAL", price: 12000, stock: 10, image: "https://i.postimg.cc/k5zFhGfv/Desodorante-aclarante.png", active: true },
+            { id: 1791144994601, name: "Shampoo Sin Sal Nutrición Absoluta", brand: "AVON", price: 35000, stock: 5, image: "https://i.postimg.cc/7YfM3gxN/shampoo-sin-sal-nutricion-absoluta.png", active: true },
+            { id: 1791144994599, name: "Sérum de Tratamiento Rios Fabulosos", brand: "AVON", price: 20000, stock: 5, image: "https://i.postimg.cc/Wp9wq9P7/Serum-de-tratamiento-rios-fabulosos.png", active: true },
+            { id: 1791144994593, name: "Óleo de Tratamiento Hidratante Nutrición Absoluta", brand: "AVON", price: 20000, stock: 5, image: "https://i.postimg.cc/qMzXs8kc/oleo-de-tratamiento-hidratante-nutricion-absoluta.png", active: true },
+            { id: 1791144994591, name: "Gel de Limpieza Íntima Femenina 3 en 1", brand: "AVON", price: 20000, stock: 5, image: "https://i.postimg.cc/dtLm28qg/Gel-de-limpieza-intima-femenina-3-en-1.png", active: true },
+            { id: 1791144994589, name: "Desorodorante Musk Marine", brand: "AVON", price: 12000, stock: 10, image: "https://i.postimg.cc/2jH7LHfQ/Desorodorante-musk-marine.png", active: true },
+            { id: 1791144994588, name: "Desodorante Wild Country", brand: "AVON", price: 12000, stock: 10, image: "https://i.postimg.cc/VLp9Dd6Z/desodorante-wild-country.png", active: true },
+            { id: 1791144994587, name: "Desodorante Musk Marine", brand: "AVON", price: 12000, stock: 10, image: "https://i.postimg.cc/4NqvBmdF/desodorante-musk-marine.png", active: true },
+            { id: 1791144994581, name: "Crema 3 en 1 para Pies con Callosidades", brand: "AVON", price: 20000, stock: 5, image: "https://i.postimg.cc/pV0J50tJ/Crema-3-en-1-para-pies-con-callosidades.png", active: true },
+            { id: 1791144994577, name: "Colonia Spray con Destellos para el Cuerpo", brand: "AVON", price: 18000, stock: 5, image: "https://i.postimg.cc/rFKC1S8n/colonia-spray-con-destellos-para-el-cuerpo.png", active: true },
+            { id: 1791144964741, name: "Carmel Gel Barber Afeitar", brand: "ALIADOS", price: 6000, stock: 10, image: "https://i.postimg.cc/zGQC23GP/aliados-carmel-gel-barber-afeitar-jpg.png", active: true },
+            { id: 1791144964740, name: "Arrurru Colonia Original Bebé", brand: "ALIADOS", price: 25000, stock: 5, image: "https://i.postimg.cc/MpL73XpL/aliados-arrurru-colonia-original-bebe-jpg.png", active: true },
             { id: 1791144964751, name: "Zoe Jelly Pop Tinta Labios Mejillas", brand: "ALIADOS", price: 0, stock: 1, image: "https://i.postimg.cc/cLzRk6JC/aliados-zoe-jelly-pop-tinta-labios-mejillas-jpg.png", active: true },
             { id: 1791144964750, name: "Zoe Brillo Labios Lumia", brand: "ALIADOS", price: 0, stock: 1, image: "https://i.postimg.cc/3xqXfWwR/aliados-zoe-brillo-labios-lumia-jpg.png", active: true },
             { id: 1791144964749, name: "Zoe Base Liquida Mate True Skin", brand: "ALIADOS", price: 0, stock: 1, image: "https://i.postimg.cc/W1yGYt41/aliados-zoe-base-liquida-mate-true-skin-jpg.png", active: true },
@@ -650,7 +646,7 @@
             { id: 1791144964742, name: "Engol Polvo Compacto Mattifying", brand: "ALIADOS", price: 0, stock: 1, image: "https://i.postimg.cc/Cx2GrdxQ/aliados-engol-polvo-compacto-mattifying-jpg.png", active: true }
         ];
 
-        // SINCRONIZACIÓN INTELIGENTE CON MEMORIA LOCAL
+        // SINCRONIZACIÓN INTELIGENTE Y CARRITO VACÍO POR DEFECTO
         function loadProductsData() {
             let stored = null;
             try {
@@ -664,22 +660,20 @@
             const initialMap = new Map(initialProducts.map(p => [p.id, p]));
             const resultMap = new Map();
 
-            // 1. Cargar productos base de la lista actual del HTML
             initialProducts.forEach(p => resultMap.set(p.id, JSON.parse(JSON.stringify(p))));
 
-            // 2. Fusionar con productos locales respetando precios > 0
             stored.forEach(sp => {
                 const initP = initialMap.get(sp.id);
                 if (initP) {
-                    // Si el producto en memoria local tenía precio 0 pero el HTML trae precio > 0, tomar el precio del HTML
                     const effectivePrice = (sp.price && Number(sp.price) > 0) ? Number(sp.price) : (initP.price || 0);
+                    const effectiveStock = (sp.stock !== undefined && Number(sp.stock) >= 0) ? Number(sp.stock) : (initP.stock || 5);
                     resultMap.set(sp.id, {
                         ...initP,
                         ...sp,
-                        price: effectivePrice
+                        price: effectivePrice,
+                        stock: effectiveStock
                     });
                 } else {
-                    // Producto agregado por el usuario en modo local
                     resultMap.set(sp.id, sp);
                 }
             });
@@ -690,6 +684,8 @@
         let catalogProducts = loadProductsData();
         let adminDraftProducts = null;
         let hasUnsavedChanges = false;
+        
+        // CARRITO LIMPIO: Si no hay registro guardado previo válido, inicia vacío
         let userCart = JSON.parse(localStorage.getItem('sol_catalog_cart')) || [];
         let selectedBrandFilter = 'TODAS';
 
@@ -738,7 +734,16 @@
 
         function sanitizeCart() {
             if (!Array.isArray(userCart)) { userCart = []; return; }
-            userCart = userCart.filter(item => item && item.id && catalogProducts.some(p => p.id === item.id));
+            userCart = userCart.filter(item => {
+                if (!item || !item.id) return false;
+                const p = catalogProducts.find(prod => prod.id === item.id);
+                if (!p) return false;
+                // Asegurar que la cantidad en el carrito no exceda el stock actual
+                if (item.qty > (p.stock || 1)) {
+                    item.qty = p.stock || 1;
+                }
+                return item.qty > 0;
+            });
         }
 
         function renderBrandFilters() {
@@ -801,7 +806,7 @@
                     <div class="col-span-full text-center py-16 bg-white rounded-2xl border border-dashed border-orange-200">
                         <i class="fa-solid fa-box-open text-4xl text-orange-300 mb-2"></i>
                         <p class="text-xs font-bold text-stone-700">No hay productos con precio publicado en esta vista.</p>
-                        <p class="text-[11px] text-stone-400 mt-1">Asigna precios a tus artículos en el panel de gestión y haz clic en "Guardar Cambios".</p>
+                        <p class="text-[11px] text-stone-400 mt-1">Asigna precios en el panel de gestión y guarda los cambios.</p>
                     </div>
                 `;
                 return;
@@ -819,7 +824,7 @@
                             <span class="bg-white/95 text-amber-950 border border-orange-100 text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase shadow-2xs">${item.brand}</span>
                         </div>
                         <div class="absolute top-2 right-2 z-10 pointer-events-none">
-                            <span class="bg-stone-900/80 text-amber-300 text-[9px] font-black px-2 py-0.5 rounded-full">Disp: ${item.stock}</span>
+                            <span class="bg-stone-900/80 text-amber-300 text-[9px] font-black px-2 py-0.5 rounded-full">Stock: ${item.stock}</span>
                         </div>
                         <img src="${item.image}" ${loadingAttr} alt="${cleanName}" onload="this.classList.add('lazy-loaded')" onerror="this.src='https://placehold.co/400x400/fed7aa/7c2d12?text=Sin+Imagen'; this.classList.add('lazy-loaded');" class="max-h-full max-w-full object-contain product-img-clean pointer-events-none group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute bottom-2 right-2 z-10 pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity">
@@ -846,12 +851,21 @@
             `}).join('');
         }
 
+        // CONTROL ESTricto DE STOCK AL AGREGAR AL CARRITO
         function addToCart(productId) {
             const product = catalogProducts.find(p => p.id === productId);
             if (!product) return;
             
             sanitizeCart();
+            const maxStock = product.stock !== undefined ? product.stock : 1;
             const cartItem = userCart.find(i => i.id === productId);
+            const currentQtyInCart = cartItem ? cartItem.qty : 0;
+
+            if (currentQtyInCart >= maxStock) {
+                showNotification(`⚠️ Solo hay ${maxStock} unidad(es) disponible(s) de "${formatProductName(product.name)}".`);
+                return;
+            }
+
             if (cartItem) {
                 cartItem.qty += 1;
             } else {
@@ -927,10 +941,20 @@
             totalAmountEl.textContent = `$${grandTotal.toLocaleString('es-CO')}`;
         }
 
+        // VALIDACIÓN DE STOCK AL CAMBIAR CANTIDAD EN EL CARRITO
         function changeCartQty(productId, delta) {
+            const product = catalogProducts.find(p => p.id === productId);
             const item = userCart.find(i => i.id === productId);
-            if (item) {
-                item.qty += delta;
+            if (item && product) {
+                const maxStock = product.stock !== undefined ? product.stock : 1;
+                const newQty = item.qty + delta;
+
+                if (newQty > maxStock) {
+                    showNotification(`⚠️ Máximo ${maxStock} unidad(es) disponible(s).`);
+                    return;
+                }
+
+                item.qty = newQty;
                 if (item.qty <= 0) {
                     userCart = userCart.filter(i => i.id !== productId);
                 }
@@ -977,10 +1001,10 @@
             if (priceEl) priceEl.textContent = `$${(product.price || 0).toLocaleString('es-CO')}`;
             if (addBtn) {
                 addBtn.style.display = 'flex';
+                addBtn.innerHTML = `<i class="fa-solid fa-cart-plus text-base"></i> Agregar`;
                 addBtn.onclick = (e) => {
                     e.stopPropagation();
                     addToCart(product.id);
-                    closeGeneralZoomModal();
                 };
             }
 
@@ -1228,7 +1252,7 @@
                     name: cleanName,
                     brand: detectedBrand,
                     price: 0,
-                    stock: 1,
+                    stock: 5,
                     image: url,
                     active: true
                 });
@@ -1275,7 +1299,7 @@
                         <div class="w-full md:w-64 space-y-1">
                             <div class="flex items-center justify-between">
                                 <label class="text-[10px] text-stone-400 font-bold block uppercase">Nombre del Producto:</label>
-                                ${isZeroPrice ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-1.5 py-0.5 rounded">⚠️ Sin Precio (Oculto al cliente)</span>' : ''}
+                                ${isZeroPrice ? '<span class="text-[9px] bg-amber-100 text-amber-800 font-extrabold px-1.5 py-0.5 rounded">⚠️ Sin Precio (Oculto)</span>' : ''}
                             </div>
                             <input type="text" value="${formatProductName(item.name)}" onchange="updateAdminItemField(${item.id}, 'name', this.value)" class="bg-stone-50 px-2.5 py-1 rounded-lg text-stone-800 text-xs font-bold border border-stone-200 focus:ring-1 focus:ring-orange-500 focus:outline-none w-full" title="Editar Nombre">
                         </div>
@@ -1301,8 +1325,8 @@
                         </div>
 
                         <div>
-                            <label class="text-[9px] text-stone-400 font-bold block uppercase">Stock</label>
-                            <input type="number" value="${item.stock || 1}" onchange="updateAdminItemField(${item.id}, 'stock', this.value)" class="w-14 px-2 py-1 bg-stone-50 border border-stone-200 rounded-lg text-xs font-bold text-stone-700 text-center">
+                            <label class="text-[9px] text-stone-400 font-bold block uppercase" title="Stock máximo que puede pedir el cliente">Stock</label>
+                            <input type="number" value="${item.stock !== undefined ? item.stock : 5}" onchange="updateAdminItemField(${item.id}, 'stock', this.value)" class="w-16 px-2 py-1 bg-stone-50 border border-stone-200 rounded-lg text-xs font-bold text-stone-700 text-center">
                         </div>
 
                         <div class="pt-3">
